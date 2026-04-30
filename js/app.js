@@ -517,7 +517,7 @@ const ANSWER_ORDER = ['context', 'rePrevious', 'studyType', 'age', 'course', 'ce
 document.addEventListener('alpine:init', () => {
   Alpine.store('app', {
     lang: localStorage.getItem('prelacion-lang') || 'es',
-    theme: localStorage.getItem('prelacion-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+    theme: localStorage.getItem('prelacion-theme') || 'light',
     view: 'schema',
     expanded: {},
     flow: {
