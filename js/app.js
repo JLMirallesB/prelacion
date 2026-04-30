@@ -526,6 +526,11 @@ document.addEventListener('alpine:init', () => {
       history: [],
     },
     shareCopied: false,
+    calc: {
+      year: new Date().getFullYear() + 1,
+      birth: '',
+      type: 'elementary',
+    },
 
     init() {
       document.documentElement.lang = this.lang;
@@ -647,6 +652,25 @@ document.addEventListener('alpine:init', () => {
         }
       });
       return list;
+    },
+
+    get calcAge() {
+      if (!this.calc.birth || !this.calc.year) return null;
+      return this.calc.year - this.calc.birth;
+    },
+
+    get calcResult() {
+      const age = this.calcAge;
+      if (age === null) return null;
+      const isEE = this.calc.type === 'elementary';
+      if (isEE) {
+        if (age < 7) return { status: 'too_young' };
+        if (age === 7) return { status: 'exception', level: 2 };
+        if (age < 12) return { status: 'ok', level: 2 };
+        return { status: 'ok', level: 4 };
+      }
+      if (age < 18) return { status: 'ok', level: 1 };
+      return { status: 'ok', level: 3 };
     },
 
     get shareUrl() {
