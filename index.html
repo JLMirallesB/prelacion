@@ -17,7 +17,13 @@
     <div class="header-content">
       <div class="header-title">
         <h1 x-text="$store.app.t('siteTitle')"></h1>
-        <p x-text="$store.app.t('siteSubtitle')"></p>
+        <p>
+          <span x-text="$store.app.t('siteSubtitle')"></span>
+          <span class="header-ref-links">
+            (<a href="https://dogv.gva.es/es/resultat-dogv?signatura=2026/12242" target="_blank" rel="noopener" x-text="$store.app.t('linkDogv')"></a>
+            · <a href="https://jlmirallesb.github.io/legis_cpmdem/es/ley/orden-8-2026/" target="_blank" rel="noopener" x-text="$store.app.t('linkLegis')"></a>)
+          </span>
+        </p>
       </div>
       <div class="header-controls">
         <button class="btn-lang" @click="$store.app.toggleTheme()" x-text="$store.app.theme === 'light' ? $store.app.t('themeToggle') : $store.app.t('themeToggleLight')"></button>

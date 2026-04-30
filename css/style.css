@@ -107,6 +107,20 @@ body {
   line-height: 1.3;
 }
 
+.header-ref-links {
+  white-space: nowrap;
+}
+
+.header-ref-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.header-ref-links a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
 .header-controls {
   display: flex;
   align-items: center;
