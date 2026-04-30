@@ -526,6 +526,7 @@ document.addEventListener('alpine:init', () => {
       history: [],
     },
     shareCopied: false,
+    calcCopied: false,
     calc: {
       year: new Date().getFullYear() + 1,
       birth: '',
@@ -673,6 +674,19 @@ document.addEventListener('alpine:init', () => {
       return { status: 'ok', level: 3 };
     },
 
+    get calcShareUrl() {
+      const url = new URL(window.location.href.split('?')[0]);
+      url.searchParams.set('calc', this.calc.year + ',' + this.calc.birth + ',' + this.calc.type);
+      return url.toString();
+    },
+
+    copyCalcUrl() {
+      navigator.clipboard.writeText(this.calcShareUrl).then(() => {
+        this.calcCopied = true;
+        setTimeout(() => { this.calcCopied = false; }, 2000);
+      });
+    },
+
     get shareUrl() {
       const pairs = [];
       ANSWER_ORDER.forEach(key => {
@@ -692,6 +706,19 @@ document.addEventListener('alpine:init', () => {
 
     _replayFromUrl() {
       const params = new URLSearchParams(window.location.search);
+
+      const calcStr = params.get('calc');
+      if (calcStr) {
+        const parts = calcStr.split(',');
+        if (parts.length === 3) {
+          this.calc.year = parseInt(parts[0]) || this.calc.year;
+          this.calc.birth = parseInt(parts[1]) || '';
+          this.calc.type = parts[2] === 'professional' ? 'professional' : 'elementary';
+          this.view = 'age';
+          return;
+        }
+      }
+
       const answersStr = params.get('answers');
       if (!answersStr) return;
 

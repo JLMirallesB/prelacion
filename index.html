@@ -660,24 +660,7 @@
     <!-- ==================== AGE VIEW ==================== -->
     <div x-show="$store.app.view === 'age'">
 
-      <!-- Info cards -->
-      <div class="age-cards">
-        <div class="age-card">
-          <h3 x-text="$store.app.t('age_ee_title')"></h3>
-          <p x-text="$store.app.t('age_ee_desc')"></p>
-          <p class="age-card-note" x-text="$store.app.t('age_ee_note')"></p>
-        </div>
-        <div class="age-card age-card-accent">
-          <h3 x-text="$store.app.t('age_exception_title')"></h3>
-          <p x-text="$store.app.t('age_exception_desc')"></p>
-        </div>
-        <div class="age-card">
-          <h3 x-text="$store.app.t('age_ep_title')"></h3>
-          <p x-text="$store.app.t('age_ep_desc')"></p>
-        </div>
-      </div>
-
-      <!-- Calculator -->
+      <!-- Calculator first -->
       <div class="age-calc">
         <h3 x-text="$store.app.t('age_calc_title')"></h3>
 
@@ -740,8 +723,30 @@
                 </div>
               </div>
             </template>
+
+            <div class="age-calc-share">
+              <button class="btn-share" @click="$store.app.copyCalcUrl()" x-text="$store.app.calcCopied ? $store.app.t('shareCopied') : $store.app.t('shareLink')"></button>
+            </div>
           </div>
         </template>
+      </div>
+
+      <!-- Normative info cards -->
+      <h3 class="age-section-title" x-text="$store.app.t('age_title')"></h3>
+      <div class="age-cards">
+        <div class="age-card">
+          <h3 x-text="$store.app.t('age_ee_title')"></h3>
+          <p x-text="$store.app.t('age_ee_desc')"></p>
+          <p class="age-card-note" x-text="$store.app.t('age_ee_note')"></p>
+        </div>
+        <div class="age-card age-card-accent">
+          <h3 x-text="$store.app.t('age_exception_title')"></h3>
+          <p x-text="$store.app.t('age_exception_desc')"></p>
+        </div>
+        <div class="age-card">
+          <h3 x-text="$store.app.t('age_ep_title')"></h3>
+          <p x-text="$store.app.t('age_ep_desc')"></p>
+        </div>
       </div>
 
     </div>

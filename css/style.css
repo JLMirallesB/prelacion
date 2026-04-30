@@ -1288,6 +1288,18 @@ body {
   margin-top: 0.35rem;
 }
 
+.age-section-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 2rem 0 0.75rem;
+}
+
+.age-calc-share {
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
 /* ========== Definitions ========== */
 .defs-list {
   display: flex;
