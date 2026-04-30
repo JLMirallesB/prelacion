@@ -1,22 +1,710 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prelación</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            color: #333;
-        }
-        h1 { color: #1a1a2e; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prelación — Admisión Conservatorios CV</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/collapse.min.js" defer></script>
+  <script src="js/alpine.min.js" defer></script>
 </head>
-<body>
-    <h1>Prelación</h1>
-    <p>Sitio en construcción.</p>
+<body x-data>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title">
+        <h1 x-text="$store.app.t('siteTitle')"></h1>
+        <p x-text="$store.app.t('siteSubtitle')"></p>
+      </div>
+      <div class="header-controls">
+        <button class="btn-lang" @click="$store.app.toggleTheme()" x-text="$store.app.theme === 'light' ? $store.app.t('themeToggle') : $store.app.t('themeToggleLight')"></button>
+        <button class="btn-lang" @click="$store.app.toggleLang()" x-text="$store.app.t('langToggle')"></button>
+        <div class="view-toggle" role="tablist">
+          <button role="tab"
+                  :aria-selected="$store.app.view === 'schema'"
+                  :class="{ active: $store.app.view === 'schema' }"
+                  @click="$store.app.setView('schema')"
+                  x-text="$store.app.t('viewSchema')"></button>
+          <button role="tab"
+                  :aria-selected="$store.app.view === 'timeline'"
+                  :class="{ active: $store.app.view === 'timeline' }"
+                  @click="$store.app.setView('timeline')"
+                  x-text="$store.app.t('viewTimeline')"></button>
+          <button role="tab"
+                  :aria-selected="$store.app.view === 'flowchart'"
+                  :class="{ active: $store.app.view === 'flowchart' }"
+                  @click="$store.app.setView('flowchart')"
+                  x-text="$store.app.t('viewFlowchart')"></button>
+          <button role="tab"
+                  :aria-selected="$store.app.view === 'defs'"
+                  :class="{ active: $store.app.view === 'defs' }"
+                  @click="$store.app.setView('defs')"
+                  x-text="$store.app.t('viewDefs')"></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ==================== SCHEMA VIEW ==================== -->
+    <div x-show="$store.app.view === 'schema'">
+
+      <div class="hierarchy-toolbar">
+        <button class="btn-sm" @click="$store.app.expandAll()" x-text="$store.app.t('expandAll')"></button>
+        <button class="btn-sm" @click="$store.app.collapseAll()" x-text="$store.app.t('collapseAll')"></button>
+      </div>
+
+      <!-- 1.ª Adjudicación -->
+      <div class="schema-phase">
+        <button class="section-header" @click="$store.app.toggle('s_adj1')" :aria-expanded="$store.app.isExpanded('s_adj1')">
+          <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1') }">&#9656;</span>
+          <span x-text="$store.app.t('s_adj1')"></span>
+        </button>
+        <div x-show="$store.app.isExpanded('s_adj1')" x-collapse>
+          <div class="section-body">
+
+            <!-- Fase 1 -->
+            <div class="schema-subphase">
+              <button class="section-header" @click="$store.app.toggle('s_adj1_f1')" :aria-expanded="$store.app.isExpanded('s_adj1_f1')">
+                <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1_f1') }">&#9656;</span>
+                <span x-text="$store.app.t('s_adj1_f1')"></span>
+              </button>
+              <div x-show="$store.app.isExpanded('s_adj1_f1')" x-collapse>
+                <div class="section-body">
+                  <p class="schema-note" x-text="$store.app.t('s_adj1_f1_note')"></p>
+
+                  <!-- Nivel 1 -->
+                  <div class="schema-level schema-level-1">
+                    <button class="section-header" @click="$store.app.toggle('s_adj1_f1_l1')" :aria-expanded="$store.app.isExpanded('s_adj1_f1_l1')">
+                      <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1_f1_l1') }">&#9656;</span>
+                      <span class="level-badge level-badge-1">1</span>
+                      <span x-text="$store.app.t('s_l1')"></span>
+                    </button>
+                    <div x-show="$store.app.isExpanded('s_adj1_f1_l1')" x-collapse>
+                      <div class="section-body">
+                        <div class="schema-prelacion">
+                          <div class="schema-pill"><span class="pill-num">1</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre1')"></div><div class="pill-desc" x-text="$store.app.t('s_pre1_short')"></div></div></div>
+                          <div class="schema-pill"><span class="pill-num">2</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre2')"></div><div class="pill-desc" x-text="$store.app.t('s_pre2_short')"></div></div></div>
+                        </div>
+                        <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Nivel 2 -->
+                  <div class="schema-level schema-level-2">
+                    <button class="section-header" @click="$store.app.toggle('s_adj1_f1_l2')" :aria-expanded="$store.app.isExpanded('s_adj1_f1_l2')">
+                      <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1_f1_l2') }">&#9656;</span>
+                      <span class="level-badge level-badge-2">2</span>
+                      <span x-text="$store.app.t('s_l2')"></span>
+                    </button>
+                    <div x-show="$store.app.isExpanded('s_adj1_f1_l2')" x-collapse>
+                      <div class="section-body">
+                        <div class="schema-prelacion">
+                          <div class="schema-pill"><span class="pill-num">1</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre1')"></div><div class="pill-desc" x-text="$store.app.t('s_pre1_short')"></div></div></div>
+                          <div class="schema-pill"><span class="pill-num">2</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre2')"></div><div class="pill-desc" x-text="$store.app.t('s_pre2_short')"></div></div></div>
+                          <div class="schema-pill"><span class="pill-num">3</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre3')"></div><div class="pill-desc" x-text="$store.app.t('s_pre3_short')"></div></div></div>
+                        </div>
+                        <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Fase 2 -->
+            <div class="schema-subphase">
+              <button class="section-header" @click="$store.app.toggle('s_adj1_f2')" :aria-expanded="$store.app.isExpanded('s_adj1_f2')">
+                <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1_f2') }">&#9656;</span>
+                <span x-text="$store.app.t('s_adj1_f2')"></span>
+              </button>
+              <div x-show="$store.app.isExpanded('s_adj1_f2')" x-collapse>
+                <div class="section-body">
+                  <div class="schema-desc" x-text="$store.app.t('s_adj1_f2_desc')"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fase 3 -->
+            <div class="schema-subphase">
+              <button class="section-header" @click="$store.app.toggle('s_adj1_f3')" :aria-expanded="$store.app.isExpanded('s_adj1_f3')">
+                <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1_f3') }">&#9656;</span>
+                <span x-text="$store.app.t('s_adj1_f3')"></span>
+              </button>
+              <div x-show="$store.app.isExpanded('s_adj1_f3')" x-collapse>
+                <div class="section-body">
+                  <p class="schema-note" x-text="$store.app.t('s_adj1_f3_note')"></p>
+
+                  <!-- Nivel 3 -->
+                  <div class="schema-level schema-level-3">
+                    <button class="section-header" @click="$store.app.toggle('s_adj1_f3_l3')" :aria-expanded="$store.app.isExpanded('s_adj1_f3_l3')">
+                      <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1_f3_l3') }">&#9656;</span>
+                      <span class="level-badge level-badge-3">3</span>
+                      <span x-text="$store.app.t('s_l3')"></span>
+                    </button>
+                    <div x-show="$store.app.isExpanded('s_adj1_f3_l3')" x-collapse>
+                      <div class="section-body">
+                        <div class="schema-prelacion">
+                          <div class="schema-pill"><span class="pill-num">1</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre1')"></div><div class="pill-desc" x-text="$store.app.t('s_pre1_short')"></div></div></div>
+                          <div class="schema-pill"><span class="pill-num">2</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre2')"></div><div class="pill-desc" x-text="$store.app.t('s_pre2_short')"></div></div></div>
+                        </div>
+                        <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Nivel 4 -->
+                  <div class="schema-level schema-level-4">
+                    <button class="section-header" @click="$store.app.toggle('s_adj1_f3_l4')" :aria-expanded="$store.app.isExpanded('s_adj1_f3_l4')">
+                      <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1_f3_l4') }">&#9656;</span>
+                      <span class="level-badge level-badge-4">4</span>
+                      <span x-text="$store.app.t('s_l4')"></span>
+                    </button>
+                    <div x-show="$store.app.isExpanded('s_adj1_f3_l4')" x-collapse>
+                      <div class="section-body">
+                        <div class="schema-prelacion">
+                          <div class="schema-pill"><span class="pill-num">1</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre1')"></div><div class="pill-desc" x-text="$store.app.t('s_pre1_short')"></div></div></div>
+                          <div class="schema-pill"><span class="pill-num">2</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre2')"></div><div class="pill-desc" x-text="$store.app.t('s_pre2_short')"></div></div></div>
+                          <div class="schema-pill"><span class="pill-num">3</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre3')"></div><div class="pill-desc" x-text="$store.app.t('s_pre3_short')"></div></div></div>
+                        </div>
+                        <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.ª Adjudicación -->
+      <div class="schema-phase">
+        <button class="section-header" @click="$store.app.toggle('s_adj2')" :aria-expanded="$store.app.isExpanded('s_adj2')">
+          <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj2') }">&#9656;</span>
+          <span x-text="$store.app.t('s_adj2')"></span>
+        </button>
+        <div x-show="$store.app.isExpanded('s_adj2')" x-collapse>
+          <div class="section-body">
+            <p class="schema-note" x-text="$store.app.t('s_adj2_desc')"></p>
+
+            <template x-for="lvl in [1,2,3,4]" :key="'s_adj2_l'+lvl">
+              <div class="schema-level" :class="'schema-level-'+lvl">
+                <button class="section-header" @click="$store.app.toggle('s_adj2_l'+lvl)" :aria-expanded="$store.app.isExpanded('s_adj2_l'+lvl)">
+                  <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj2_l'+lvl) }">&#9656;</span>
+                  <span class="level-badge" :class="'level-badge-'+lvl" x-text="lvl"></span>
+                  <span x-text="$store.app.t('s_l'+lvl)"></span>
+                </button>
+                <div x-show="$store.app.isExpanded('s_adj2_l'+lvl)" x-collapse>
+                  <div class="section-body">
+                    <div class="schema-prelacion">
+                      <div class="schema-pill"><span class="pill-num">1</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_adj2_pre1')"></div><div class="pill-desc" x-text="$store.app.t('s_adj2_pre1_short')"></div></div></div>
+                      <div class="schema-pill"><span class="pill-num">2</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_adj2_pre2')"></div><div class="pill-desc" x-text="$store.app.t('s_adj2_pre2_short')"></div></div></div>
+                      <div class="schema-pill"><span class="pill-num">3</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_adj2_pre3')"></div><div class="pill-desc" x-text="$store.app.t('s_adj2_pre3_short')"></div></div></div>
+                    </div>
+                    <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
+                  </div>
+                </div>
+              </div>
+            </template>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Convocatoria extraordinaria -->
+      <div class="schema-phase">
+        <button class="section-header" @click="$store.app.toggle('s_extra')" :aria-expanded="$store.app.isExpanded('s_extra')">
+          <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_extra') }">&#9656;</span>
+          <span x-text="$store.app.t('s_extra')"></span>
+        </button>
+        <div x-show="$store.app.isExpanded('s_extra')" x-collapse>
+          <div class="section-body">
+            <p class="schema-note" x-text="$store.app.t('s_extra_desc')"></p>
+
+            <!-- Nivel 1 -->
+            <div class="schema-level schema-level-1">
+              <button class="section-header" @click="$store.app.toggle('s_extra_l1')" :aria-expanded="$store.app.isExpanded('s_extra_l1')">
+                <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_extra_l1') }">&#9656;</span>
+                <span class="level-badge level-badge-1">1</span>
+                <span x-text="$store.app.t('s_l1')"></span>
+              </button>
+              <div x-show="$store.app.isExpanded('s_extra_l1')" x-collapse>
+                <div class="section-body">
+                  <div class="schema-prelacion">
+                    <div class="schema-pill"><span class="pill-num">1</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre1')"></div><div class="pill-desc" x-text="$store.app.t('s_pre1_short')"></div></div></div>
+                    <div class="schema-pill"><span class="pill-num">2</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre2')"></div><div class="pill-desc" x-text="$store.app.t('s_pre2_short')"></div></div></div>
+                  </div>
+                  <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nivel 2 -->
+            <div class="schema-level schema-level-2">
+              <button class="section-header" @click="$store.app.toggle('s_extra_l2')" :aria-expanded="$store.app.isExpanded('s_extra_l2')">
+                <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_extra_l2') }">&#9656;</span>
+                <span class="level-badge level-badge-2">2</span>
+                <span x-text="$store.app.t('s_l2')"></span>
+              </button>
+              <div x-show="$store.app.isExpanded('s_extra_l2')" x-collapse>
+                <div class="section-body">
+                  <div class="schema-prelacion">
+                    <div class="schema-pill"><span class="pill-num">1</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre1')"></div><div class="pill-desc" x-text="$store.app.t('s_pre1_short')"></div></div></div>
+                    <div class="schema-pill"><span class="pill-num">2</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre2')"></div><div class="pill-desc" x-text="$store.app.t('s_pre2_short')"></div></div></div>
+                    <div class="schema-pill"><span class="pill-num">3</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre3')"></div><div class="pill-desc" x-text="$store.app.t('s_pre3_short')"></div></div></div>
+                  </div>
+                  <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nivel 3 -->
+            <div class="schema-level schema-level-3">
+              <button class="section-header" @click="$store.app.toggle('s_extra_l3')" :aria-expanded="$store.app.isExpanded('s_extra_l3')">
+                <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_extra_l3') }">&#9656;</span>
+                <span class="level-badge level-badge-3">3</span>
+                <span x-text="$store.app.t('s_l3')"></span>
+              </button>
+              <div x-show="$store.app.isExpanded('s_extra_l3')" x-collapse>
+                <div class="section-body">
+                  <div class="schema-prelacion">
+                    <div class="schema-pill"><span class="pill-num">1</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre1')"></div><div class="pill-desc" x-text="$store.app.t('s_pre1_short')"></div></div></div>
+                    <div class="schema-pill"><span class="pill-num">2</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre2')"></div><div class="pill-desc" x-text="$store.app.t('s_pre2_short')"></div></div></div>
+                  </div>
+                  <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nivel 4 -->
+            <div class="schema-level schema-level-4">
+              <button class="section-header" @click="$store.app.toggle('s_extra_l4')" :aria-expanded="$store.app.isExpanded('s_extra_l4')">
+                <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_extra_l4') }">&#9656;</span>
+                <span class="level-badge level-badge-4">4</span>
+                <span x-text="$store.app.t('s_l4')"></span>
+              </button>
+              <div x-show="$store.app.isExpanded('s_extra_l4')" x-collapse>
+                <div class="section-body">
+                  <div class="schema-prelacion">
+                    <div class="schema-pill"><span class="pill-num">1</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre1')"></div><div class="pill-desc" x-text="$store.app.t('s_pre1_short')"></div></div></div>
+                    <div class="schema-pill"><span class="pill-num">2</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre2')"></div><div class="pill-desc" x-text="$store.app.t('s_pre2_short')"></div></div></div>
+                    <div class="schema-pill"><span class="pill-num">3</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre3')"></div><div class="pill-desc" x-text="$store.app.t('s_pre3_short')"></div></div></div>
+                  </div>
+                  <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Vacantes durante el curso -->
+      <div class="schema-phase">
+        <button class="section-header" @click="$store.app.toggle('s_mid')" :aria-expanded="$store.app.isExpanded('s_mid')">
+          <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_mid') }">&#9656;</span>
+          <span x-text="$store.app.t('s_mid')"></span>
+        </button>
+        <div x-show="$store.app.isExpanded('s_mid')" x-collapse>
+          <div class="section-body">
+            <div class="schema-mid-items">
+              <div class="schema-mid-item"><span class="mid-letter">a)</span><span class="mid-desc" x-text="$store.app.t('s_mid_a')"></span></div>
+              <div class="schema-mid-item"><span class="mid-letter">b)</span><span class="mid-desc" x-text="$store.app.t('s_mid_b')"></span></div>
+              <div class="schema-mid-item"><span class="mid-letter">c)</span><span class="mid-desc" x-text="$store.app.t('s_mid_c')"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================== TIMELINE VIEW ==================== -->
+    <div x-show="$store.app.view === 'timeline'">
+      <div class="tl">
+
+        <!-- 1.ª Adj · Fase 1 -->
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase-badge tl-phase-1" x-text="$store.app.t('tl_adj1_f1')"></span>
+              <div class="tl-level-badges">
+                <span class="level-badge level-badge-1">1</span>
+                <span class="level-badge level-badge-2">2</span>
+              </div>
+            </div>
+            <div class="tl-card-body">
+              <p class="tl-note" x-text="$store.app.t('s_adj1_f1_note')"></p>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-1">1</span> <span x-text="$store.app.t('s_l1')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_pre2')"></span></span>
+                </div>
+              </div>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-2">2</span> <span x-text="$store.app.t('s_l2')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_pre2')"></span></span>
+                  <span class="tl-pill"><b>3.º</b> <span x-text="$store.app.t('s_pre3')"></span></span>
+                </div>
+              </div>
+              <div class="tl-criteria"><span x-text="$store.app.t('tl_criteria_label')"></span>: <span x-text="$store.app.t('s_criteria')"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.ª Adj · Fase 2 -->
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase-badge tl-phase-1" x-text="$store.app.t('tl_adj1_f2')"></span>
+              <div class="tl-level-badges">
+                <span class="level-badge level-badge-2">2</span>
+              </div>
+            </div>
+            <div class="tl-card-body">
+              <p class="tl-desc" x-text="$store.app.t('s_adj1_f2_desc')"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.ª Adj · Fase 3 -->
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase-badge tl-phase-1" x-text="$store.app.t('tl_adj1_f3')"></span>
+              <div class="tl-level-badges">
+                <span class="level-badge level-badge-3">3</span>
+                <span class="level-badge level-badge-4">4</span>
+              </div>
+            </div>
+            <div class="tl-card-body">
+              <p class="tl-note" x-text="$store.app.t('s_adj1_f3_note')"></p>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-3">3</span> <span x-text="$store.app.t('s_l3')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_pre2')"></span></span>
+                </div>
+              </div>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-4">4</span> <span x-text="$store.app.t('s_l4')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_pre2')"></span></span>
+                  <span class="tl-pill"><b>3.º</b> <span x-text="$store.app.t('s_pre3')"></span></span>
+                </div>
+              </div>
+              <div class="tl-criteria"><span x-text="$store.app.t('tl_criteria_label')"></span>: <span x-text="$store.app.t('s_criteria')"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2.ª Adjudicación -->
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase-badge tl-phase-2" x-text="$store.app.t('tl_adj2')"></span>
+              <div class="tl-level-badges">
+                <span class="level-badge level-badge-1">1</span>
+                <span class="level-badge level-badge-2">2</span>
+                <span class="level-badge level-badge-3">3</span>
+                <span class="level-badge level-badge-4">4</span>
+              </div>
+            </div>
+            <div class="tl-card-body">
+              <p class="tl-note" x-text="$store.app.t('s_adj2_desc')"></p>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-1">1</span> <span x-text="$store.app.t('s_l1')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_adj2_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_adj2_pre2')"></span></span>
+                  <span class="tl-pill"><b>3.º</b> <span x-text="$store.app.t('s_adj2_pre3')"></span></span>
+                </div>
+              </div>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-2">2</span> <span x-text="$store.app.t('s_l2')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_adj2_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_adj2_pre2')"></span></span>
+                  <span class="tl-pill"><b>3.º</b> <span x-text="$store.app.t('s_adj2_pre3')"></span></span>
+                </div>
+              </div>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-3">3</span> <span x-text="$store.app.t('s_l3')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_adj2_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_adj2_pre2')"></span></span>
+                  <span class="tl-pill"><b>3.º</b> <span x-text="$store.app.t('s_adj2_pre3')"></span></span>
+                </div>
+              </div>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-4">4</span> <span x-text="$store.app.t('s_l4')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_adj2_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_adj2_pre2')"></span></span>
+                  <span class="tl-pill"><b>3.º</b> <span x-text="$store.app.t('s_adj2_pre3')"></span></span>
+                </div>
+              </div>
+              <div class="tl-criteria"><span x-text="$store.app.t('tl_criteria_label')"></span>: <span x-text="$store.app.t('s_criteria')"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extraordinaria -->
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase-badge tl-phase-3" x-text="$store.app.t('tl_extra')"></span>
+              <div class="tl-level-badges">
+                <span class="level-badge level-badge-1">1</span>
+                <span class="level-badge level-badge-2">2</span>
+                <span class="level-badge level-badge-3">3</span>
+                <span class="level-badge level-badge-4">4</span>
+              </div>
+            </div>
+            <div class="tl-card-body">
+              <p class="tl-note" x-text="$store.app.t('s_extra_desc')"></p>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-1">1</span> <span x-text="$store.app.t('s_l1')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_pre2')"></span></span>
+                </div>
+              </div>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-2">2</span> <span x-text="$store.app.t('s_l2')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_pre2')"></span></span>
+                  <span class="tl-pill"><b>3.º</b> <span x-text="$store.app.t('s_pre3')"></span></span>
+                </div>
+              </div>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-3">3</span> <span x-text="$store.app.t('s_l3')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_pre2')"></span></span>
+                </div>
+              </div>
+              <div class="tl-level-group">
+                <div class="tl-level-label"><span class="level-badge level-badge-4">4</span> <span x-text="$store.app.t('s_l4')"></span></div>
+                <div class="tl-pills">
+                  <span class="tl-pill"><b>1.º</b> <span x-text="$store.app.t('s_pre1')"></span></span>
+                  <span class="tl-pill"><b>2.º</b> <span x-text="$store.app.t('s_pre2')"></span></span>
+                  <span class="tl-pill"><b>3.º</b> <span x-text="$store.app.t('s_pre3')"></span></span>
+                </div>
+              </div>
+              <div class="tl-criteria"><span x-text="$store.app.t('tl_criteria_label')"></span>: <span x-text="$store.app.t('s_criteria')"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vacantes durante el curso -->
+        <div class="tl-node tl-node-last">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase-badge tl-phase-4" x-text="$store.app.t('tl_mid')"></span>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-mid-list">
+                <div class="tl-mid-row"><span class="tl-mid-letter">a)</span><span x-text="$store.app.t('s_mid_a')"></span></div>
+                <div class="tl-mid-row"><span class="tl-mid-letter">b)</span><span x-text="$store.app.t('s_mid_b')"></span></div>
+                <div class="tl-mid-row"><span class="tl-mid-letter">c)</span><span x-text="$store.app.t('s_mid_c')"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== FLOWCHART VIEW ==================== -->
+    <div x-show="$store.app.view === 'flowchart'">
+      <div class="flowchart-container">
+
+        <!-- Answers breadcrumb -->
+        <template x-if="Object.keys($store.app.flow.answers).length > 0 && !$store.app.isResult">
+          <div class="answers-breadcrumb" style="max-width:32rem;width:100%;margin-bottom:0.75rem;">
+            <template x-for="a in $store.app.answersList" :key="a.labelKey">
+              <span class="answer-chip">
+                <span class="chip-label" x-text="$store.app.t(a.labelKey) + ':'"></span>
+                <span x-text="$store.app.t(a.valKey)"></span>
+              </span>
+            </template>
+          </div>
+        </template>
+
+        <!-- Question card -->
+        <template x-if="$store.app.currentStep && ($store.app.currentStep.type === 'question' || $store.app.currentStep.type === 'info_question')">
+          <div class="flow-card">
+            <template x-if="$store.app.currentStep.infoKey">
+              <div class="flow-info" x-text="$store.app.t($store.app.currentStep.infoKey)"></div>
+            </template>
+            <h2 class="flow-question" tabindex="-1" x-text="$store.app.t($store.app.currentStep.questionKey)"></h2>
+            <div class="flow-options">
+              <template x-for="opt in $store.app.currentStep.options" :key="opt.labelKey">
+                <button class="flow-option"
+                        @click="$store.app.flowGoTo(opt.next, opt.answerKey, opt.answerValue)"
+                        x-text="$store.app.t(opt.labelKey)"></button>
+              </template>
+            </div>
+          </div>
+        </template>
+
+        <!-- Result card -->
+        <template x-if="$store.app.isResult">
+          <div class="result-card">
+            <div class="result-header" tabindex="-1">
+              <h2 x-text="$store.app.t('yourResult')"></h2>
+              <template x-if="$store.app.currentStep.level">
+                <div class="result-level">
+                  <span class="result-level-num" x-text="$store.app.currentStep.level"></span>
+                  <span class="result-level-label" x-text="$store.app.t($store.app.resultLevelKey)"></span>
+                </div>
+              </template>
+            </div>
+            <template x-if="$store.app.resultPrelacionKey">
+              <div class="result-section">
+                <div class="result-section-title" x-text="$store.app.t('prelacionPosition')"></div>
+                <div class="result-section-value" x-text="$store.app.t($store.app.resultPrelacionKey)"></div>
+              </div>
+            </template>
+            <div class="result-section">
+              <div class="result-section-title" x-text="$store.app.t('adjudicationPhase')"></div>
+              <div class="result-section-value" x-text="$store.app.t($store.app.currentStep.phaseKey)"></div>
+            </div>
+            <div class="result-section">
+              <div class="result-section-title" x-text="$store.app.t('orderingCriteria')"></div>
+              <ol class="result-ordering">
+                <template x-for="key in $store.app.currentStep.ordering" :key="key">
+                  <li x-text="$store.app.t(key)"></li>
+                </template>
+              </ol>
+            </div>
+            <div class="result-section">
+              <div class="result-section-title" x-text="$store.app.t('explanation')"></div>
+              <p x-text="$store.app.t($store.app.currentStep.explanationKey)"></p>
+            </div>
+            <template x-if="$store.app.timelinePosition >= 0">
+              <div class="result-section">
+                <div class="result-section-title" x-text="$store.app.t('tl_pos_title')"></div>
+                <div class="mini-tl">
+                  <template x-for="(posKey, idx) in $store.app.timelinePositions" :key="posKey">
+                    <div class="mini-tl-row"
+                         :class="{ 'mini-tl-active': idx === $store.app.timelinePosition, 'mini-tl-before': idx < $store.app.timelinePosition, 'mini-tl-after': idx > $store.app.timelinePosition }">
+                      <span class="mini-tl-dot"></span>
+                      <span class="mini-tl-label" x-text="$store.app.t(posKey)"></span>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </template>
+            <div class="result-section">
+              <div class="result-section-title" x-text="$store.app.t('yourAnswers')"></div>
+              <div class="answers-breadcrumb">
+                <template x-for="a in $store.app.answersList" :key="a.labelKey">
+                  <span class="answer-chip">
+                    <span class="chip-label" x-text="$store.app.t(a.labelKey) + ':'"></span>
+                    <span x-text="$store.app.t(a.valKey)"></span>
+                  </span>
+                </template>
+              </div>
+            </div>
+            <div class="result-section result-share">
+              <button class="btn-share" @click="$store.app.copyShareUrl()" x-text="$store.app.shareCopied ? $store.app.t('shareCopied') : $store.app.t('shareLink')"></button>
+            </div>
+          </div>
+        </template>
+
+        <!-- Navigation -->
+        <div class="flow-nav">
+          <template x-if="$store.app.flow.history.length > 0">
+            <button class="btn-nav" @click="$store.app.flowBack()" x-text="$store.app.t('back')"></button>
+          </template>
+          <template x-if="$store.app.flow.step !== 'start'">
+            <button class="btn-nav" @click="$store.app.flowRestart()" x-text="$store.app.t('restart')"></button>
+          </template>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== DEFINITIONS VIEW ==================== -->
+    <div x-show="$store.app.view === 'defs'">
+      <dl class="defs-list">
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_levels')"></dt>
+          <dd x-text="$store.app.t('def_levels_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_exam_same')"></dt>
+          <dd x-text="$store.app.t('def_exam_same_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_readmission')"></dt>
+          <dd x-text="$store.app.t('def_readmission_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_readmission_other')"></dt>
+          <dd x-text="$store.app.t('def_readmission_other_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_specialty')"></dt>
+          <dd x-text="$store.app.t('def_specialty_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_transfer')"></dt>
+          <dd x-text="$store.app.t('def_transfer_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_transfer_course')"></dt>
+          <dd x-text="$store.app.t('def_transfer_course_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_exam_other')"></dt>
+          <dd x-text="$store.app.t('def_exam_other_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_midcourse')"></dt>
+          <dd x-text="$store.app.t('def_midcourse_desc')"></dd>
+        </div>
+      </dl>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p x-text="$store.app.t('footerRef')"></p>
+    <p x-text="$store.app.t('footerDisclaimer')"></p>
+    <p>
+      <span x-text="$store.app.t('footerAuthor')"></span>
+      <a href="https://www.jlmirall.es" target="_blank" rel="noopener">Jos&eacute; Luis Miralles Bono</a>,
+      <span x-text="$store.app.t('footerWithHelp')"></span>
+      <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>
+    </p>
+    <p class="footer-links">
+      <a href="https://github.com/JLMirallesB/prelacion" target="_blank" rel="noopener" x-text="$store.app.t('footerSource')"></a>
+      &middot;
+      <a href="https://ko-fi.com/miralles" target="_blank" rel="noopener" x-text="$store.app.t('footerOrchata')"></a>
+    </p>
+  </footer>
+
 </body>
 </html>
