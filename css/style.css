@@ -1163,11 +1163,38 @@ body {
 
   .header-controls {
     width: 100%;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .header-controls .btn-lang {
+    font-size: var(--font-size-xs);
+    padding: 0.2rem 0.5rem;
+  }
+
+  .view-toggle {
+    width: 100%;
+    order: 1;
+  }
+
+  .view-toggle button {
+    flex: 1;
+    font-size: var(--font-size-xs);
+    padding: 0.3rem 0.25rem;
+    text-align: center;
   }
 
   .header-title h1 {
     font-size: var(--font-size-base);
+  }
+
+  .header-title p {
+    font-size: 0.65rem;
+  }
+
+  .header-ref-links {
+    display: block;
+    white-space: normal;
   }
 
   .flow-question {
