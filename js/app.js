@@ -62,19 +62,19 @@ const FLOWCHART_STEPS = {
   },
   r_prof_o18: {
     type: 'result', level: 3, prelacion: 2,
-    phaseKey: 'result_phase3',
+    phaseKey: 'result_adj1_l3l4',
     explanationKey: 'result_explain_newAdmission',
     ordering: ['ordering_course', 'ordering_grade', 'ordering_birth', 'ordering_lottery'],
   },
   r_elem_1stM_u12: {
     type: 'result', level: 2, prelacion: 2,
-    phaseKey: 'result_firstAdj_phase2',
+    phaseKey: 'result_adj1_l2b',
     explanationKey: 'result_explain_newAdmission_1stMusic_under12',
     ordering: ['ordering_grade', 'ordering_birth', 'ordering_lottery'],
   },
   r_elem_1stM_o12: {
     type: 'result', level: 4, prelacion: 2,
-    phaseKey: 'result_phase3',
+    phaseKey: 'result_adj1_l3l4',
     explanationKey: 'result_explain_newAdmission_1stMusic_over12',
     ordering: ['ordering_grade', 'ordering_birth', 'ordering_lottery'],
   },
@@ -86,7 +86,7 @@ const FLOWCHART_STEPS = {
   },
   r_elem_other_o12: {
     type: 'result', level: 4, prelacion: 2,
-    phaseKey: 'result_phase3',
+    phaseKey: 'result_adj1_l3l4',
     explanationKey: 'result_explain_newAdmission',
     ordering: ['ordering_course', 'ordering_grade', 'ordering_birth', 'ordering_lottery'],
   },
@@ -174,13 +174,13 @@ const FLOWCHART_STEPS = {
   },
   r_re_same_l3: {
     type: 'result', level: 3, prelacion: 1,
-    phaseKey: 'result_phase3',
+    phaseKey: 'result_adj1_l3l4',
     explanationKey: 'result_explain_readmission_same',
     ordering: ['ordering_course', 'ordering_grade', 'ordering_birth', 'ordering_lottery'],
   },
   r_re_same_l4: {
     type: 'result', level: 4, prelacion: 1,
-    phaseKey: 'result_phase3',
+    phaseKey: 'result_adj1_l3l4',
     explanationKey: 'result_explain_readmission_same',
     ordering: ['ordering_course', 'ordering_grade', 'ordering_birth', 'ordering_lottery'],
   },
@@ -336,13 +336,13 @@ const FLOWCHART_STEPS = {
   },
   r_spec_l2: {
     type: 'result', level: 2, prelacion: 3,
-    phaseKey: 'result_firstAdj',
+    phaseKey: 'result_adj1_cambio',
     explanationKey: 'result_explain_specialty_change',
     ordering: ['ordering_grade', 'ordering_birth', 'ordering_lottery'],
   },
   r_spec_l4: {
     type: 'result', level: 4, prelacion: 3,
-    phaseKey: 'result_phase3',
+    phaseKey: 'result_adj1_cambio',
     explanationKey: 'result_explain_specialty_change',
     ordering: ['ordering_grade', 'ordering_birth', 'ordering_lottery'],
   },
@@ -467,8 +467,8 @@ const FLOWCHART_STEPS = {
 };
 
 const TIMELINE_POSITIONS = [
-  'tl_pos_adj1_f1_l1', 'tl_pos_adj1_f1_l2', 'tl_pos_adj1_f2',
-  'tl_pos_adj1_f3_l3', 'tl_pos_adj1_f3_l4',
+  'tl_pos_adj1_l1', 'tl_pos_adj1_l2a', 'tl_pos_adj1_l2b', 'tl_pos_adj1_l2c',
+  'tl_pos_adj1_l3', 'tl_pos_adj1_l4',
   'tl_pos_adj2_l1', 'tl_pos_adj2_l2', 'tl_pos_adj2_l3', 'tl_pos_adj2_l4',
   'tl_pos_extra',
   'tl_pos_mid_a', 'tl_pos_mid_b', 'tl_pos_mid_c',
@@ -476,12 +476,13 @@ const TIMELINE_POSITIONS = [
 
 const PHASE_LEVEL_TO_POS = {
   'result_firstAdj:1': 0, 'result_firstAdj:2': 1,
-  'result_firstAdj_phase2:2': 2,
-  'result_phase3:3': 3, 'result_phase3:4': 4,
-  'result_secondAdj:1': 5, 'result_secondAdj:2': 6, 'result_secondAdj:3': 7, 'result_secondAdj:4': 8,
-  'result_art22a:1': 10, 'result_art22a:2': 10, 'result_art22a:3': 10, 'result_art22a:4': 10,
-  'result_art22b:1': 11, 'result_art22b:2': 11, 'result_art22b:3': 11, 'result_art22b:4': 11,
-  'result_art22c:1': 12, 'result_art22c:2': 12, 'result_art22c:3': 12, 'result_art22c:4': 12,
+  'result_adj1_l2b:2': 2,
+  'result_adj1_cambio:2': 3, 'result_adj1_cambio:4': 3,
+  'result_adj1_l3l4:3': 4, 'result_adj1_l3l4:4': 5,
+  'result_secondAdj:1': 6, 'result_secondAdj:2': 7, 'result_secondAdj:3': 8, 'result_secondAdj:4': 9,
+  'result_art22a:1': 11, 'result_art22a:2': 11, 'result_art22a:3': 11, 'result_art22a:4': 11,
+  'result_art22b:1': 12, 'result_art22b:2': 12, 'result_art22b:3': 12, 'result_art22b:4': 12,
+  'result_art22c:1': 13, 'result_art22c:2': 13, 'result_art22c:3': 13, 'result_art22c:4': 13,
 };
 
 const ANSWER_LABELS = {
@@ -505,8 +506,8 @@ const ANSWER_VALUES = {
 };
 
 const ALL_SCHEMA_SECTIONS = [
-  's_adj1', 's_adj1_f1', 's_adj1_f1_l1', 's_adj1_f1_l2',
-  's_adj1_f2', 's_adj1_f3', 's_adj1_f3_l3', 's_adj1_f3_l4',
+  's_adj1', 's_adj1_l1', 's_adj1_l2a', 's_adj1_l2b', 's_adj1_l2c',
+  's_adj1_l3', 's_adj1_l4',
   's_adj2', 's_adj2_l1', 's_adj2_l2', 's_adj2_l3', 's_adj2_l4',
   's_extra', 's_extra_l1', 's_extra_l2', 's_extra_l3', 's_extra_l4',
   's_mid',
