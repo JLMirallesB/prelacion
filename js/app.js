@@ -467,7 +467,7 @@ const FLOWCHART_STEPS = {
 };
 
 const TIMELINE_POSITIONS = [
-  'tl_pos_adj1_l1', 'tl_pos_adj1_l2a', 'tl_pos_adj1_l2b', 'tl_pos_adj1_l2c',
+  'tl_pos_adj1_l1', 'tl_pos_adj1_l2a', 'tl_pos_adj1_l2c', 'tl_pos_adj1_l2b',
   'tl_pos_adj1_l3', 'tl_pos_adj1_l4',
   'tl_pos_adj2_l1', 'tl_pos_adj2_l2', 'tl_pos_adj2_l3', 'tl_pos_adj2_l4',
   'tl_pos_extra',
@@ -476,8 +476,8 @@ const TIMELINE_POSITIONS = [
 
 const PHASE_LEVEL_TO_POS = {
   'result_firstAdj:1': 0, 'result_firstAdj:2': 1,
-  'result_adj1_l2b:2': 2,
-  'result_adj1_cambio:2': 3, 'result_adj1_cambio:4': 3,
+  'result_adj1_cambio:2': 2, 'result_adj1_cambio:4': 2,
+  'result_adj1_l2b:2': 3,
   'result_adj1_l3l4:3': 4, 'result_adj1_l3l4:4': 5,
   'result_secondAdj:1': 6, 'result_secondAdj:2': 7, 'result_secondAdj:3': 8, 'result_secondAdj:4': 9,
   'result_art22a:1': 11, 'result_art22a:2': 11, 'result_art22a:3': 11, 'result_art22a:4': 11,
@@ -506,7 +506,7 @@ const ANSWER_VALUES = {
 };
 
 const ALL_SCHEMA_SECTIONS = [
-  's_adj1', 's_adj1_l1', 's_adj1_l2a', 's_adj1_l2b', 's_adj1_l2c',
+  's_adj1', 's_adj1_l1', 's_adj1_l2a', 's_adj1_l2c', 's_adj1_l2b',
   's_adj1_l3', 's_adj1_l4',
   's_adj2', 's_adj2_l1', 's_adj2_l2', 's_adj2_l3', 's_adj2_l4',
   's_extra', 's_extra_l1', 's_extra_l2', 's_extra_l3', 's_extra_l4',
