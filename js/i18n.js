@@ -256,7 +256,7 @@ window.I18N = {
 
     result_firstAdj: 'Primera adjudicación de la convocatoria ordinaria (art. 20.1)',
     result_adj1_l2b: 'Primera adjudicación — Tramo B: acto público de asignación de especialidad instrumental (art. 20.2)',
-    result_adj1_cambio: 'Primera adjudicación — Cambio de especialidad, antes del acto público (art. 20.1, art. 19.1.3.º)',
+    result_adj1_cambio: 'Primera adjudicación — Cambio de especialidad, tras el acto público (art. 19.1.3.º)',
     result_adj1_l3l4: 'Primera adjudicación — Vacantes restantes tras niveles 1 y 2 (art. 20.3)',
     result_secondAdj: 'Segunda adjudicación de la convocatoria ordinaria (art. 21)',
     result_art22extra: 'Convocatoria extraordinaria (art. 22.1)',
@@ -573,7 +573,7 @@ window.I18N = {
 
     result_firstAdj: 'Primera adjudicació de la convocatòria ordinària (art. 20)',
     result_adj1_l2b: 'Primera adjudicació — Tram B: acte públic d\'assignació d\'especialitat instrumental (art. 20.2)',
-    result_adj1_cambio: 'Primera adjudicació — Canvi d\'especialitat, abans de l\'acte públic (art. 20.1, art. 19.1.3r)',
+    result_adj1_cambio: 'Primera adjudicació — Canvi d\'especialitat, després de l\'acte públic (art. 19.1.3r)',
     result_secondAdj: 'Segona adjudicació de la convocatòria ordinària (art. 21)',
     result_adj1_l3l4: 'Primera adjudicació — Vacants restants després de nivells 1 i 2 (art. 20.3)',
     result_art22extra: 'Convocatòria extraordinària (art. 22.1)',

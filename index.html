@@ -117,6 +117,20 @@
               </div>
             </div>
 
+            <!-- Nivel 2 — Tramo B -->
+            <div class="schema-level schema-level-2">
+              <button class="section-header" @click="$store.app.toggle('s_adj1_l2b')" :aria-expanded="$store.app.isExpanded('s_adj1_l2b')">
+                <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1_l2b') }">&#9656;</span>
+                <span class="level-badge level-badge-2">2</span>
+                <span x-text="$store.app.t('s_l2b')"></span>
+              </button>
+              <div x-show="$store.app.isExpanded('s_adj1_l2b')" x-collapse>
+                <div class="section-body">
+                  <div class="schema-desc" x-text="$store.app.t('s_l2b_desc')"></div>
+                </div>
+              </div>
+            </div>
+
             <!-- Nivel 2 — Cambio de especialidad -->
             <div class="schema-level schema-level-2">
               <button class="section-header" @click="$store.app.toggle('s_adj1_l2c')" :aria-expanded="$store.app.isExpanded('s_adj1_l2c')">
@@ -130,20 +144,6 @@
                     <div class="schema-pill"><span class="pill-num">3</span><div class="pill-content"><div class="pill-title" x-text="$store.app.t('s_pre3')"></div><div class="pill-desc" x-text="$store.app.t('s_pre3_short')"></div></div></div>
                   </div>
                   <p class="schema-criteria" x-text="$store.app.t('s_criteria')"></p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Nivel 2 — Tramo B -->
-            <div class="schema-level schema-level-2">
-              <button class="section-header" @click="$store.app.toggle('s_adj1_l2b')" :aria-expanded="$store.app.isExpanded('s_adj1_l2b')">
-                <span class="chevron" :class="{ expanded: $store.app.isExpanded('s_adj1_l2b') }">&#9656;</span>
-                <span class="level-badge level-badge-2">2</span>
-                <span x-text="$store.app.t('s_l2b')"></span>
-              </button>
-              <div x-show="$store.app.isExpanded('s_adj1_l2b')" x-collapse>
-                <div class="section-body">
-                  <div class="schema-desc" x-text="$store.app.t('s_l2b_desc')"></div>
                 </div>
               </div>
             </div>
@@ -373,6 +373,21 @@
           </div>
         </div>
 
+        <!-- 1.ª Adj · Nivel 2 Tramo B -->
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase-badge tl-phase-1" x-text="$store.app.t('s_adj1')"></span>
+              <div class="tl-level-badges"><span class="level-badge level-badge-2">2</span></div>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-level-label"><span class="level-badge level-badge-2">2</span> <span x-text="$store.app.t('s_l2b')"></span></div>
+              <p class="tl-desc" x-text="$store.app.t('s_l2b_desc')"></p>
+            </div>
+          </div>
+        </div>
+
         <!-- 1.ª Adj · Nivel 2 Cambio especialidad -->
         <div class="tl-node">
           <div class="tl-dot"></div>
@@ -387,21 +402,6 @@
                 <span class="tl-pill"><b>3.º</b> <span x-text="$store.app.t('s_pre3')"></span></span>
               </div>
               <div class="tl-criteria"><span x-text="$store.app.t('tl_criteria_label')"></span>: <span x-text="$store.app.t('s_criteria')"></span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 1.ª Adj · Nivel 2 Tramo B -->
-        <div class="tl-node">
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-card-header">
-              <span class="tl-phase-badge tl-phase-1" x-text="$store.app.t('s_adj1')"></span>
-              <div class="tl-level-badges"><span class="level-badge level-badge-2">2</span></div>
-            </div>
-            <div class="tl-card-body">
-              <div class="tl-level-label"><span class="level-badge level-badge-2">2</span> <span x-text="$store.app.t('s_l2b')"></span></div>
-              <p class="tl-desc" x-text="$store.app.t('s_l2b_desc')"></p>
             </div>
           </div>
         </div>
