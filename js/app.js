@@ -515,6 +515,29 @@ const ALL_SCHEMA_SECTIONS = [
 
 const ANSWER_ORDER = ['context', 'rePrevious', 'studyType', 'age', 'course', 'center', 'transferType', 'midOrdinary', 'midCourseType'];
 
+const MUSIC_SPECIALTIES = [
+  { key: 'piano', hasEE: true },
+  { key: 'violin', hasEE: true },
+  { key: 'viola', hasEE: true },
+  { key: 'cello', hasEE: true },
+  { key: 'doublebass', hasEE: true },
+  { key: 'flute', hasEE: true },
+  { key: 'oboe', hasEE: true },
+  { key: 'clarinet', hasEE: true },
+  { key: 'bassoon', hasEE: true },
+  { key: 'saxophone', hasEE: true },
+  { key: 'horn', hasEE: true },
+  { key: 'trumpet', hasEE: true },
+  { key: 'trombone', hasEE: true },
+  { key: 'tuba', hasEE: true },
+  { key: 'percussion', hasEE: true },
+  { key: 'guitar', hasEE: true },
+  { key: 'harp', hasEE: true },
+  { key: 'singing', hasEE: false },
+  { key: 'electric_guitar', hasEE: false },
+  { key: 'electric_bass', hasEE: false },
+];
+
 document.addEventListener('alpine:init', () => {
   Alpine.store('app', {
     lang: localStorage.getItem('prelacion-lang') || 'es',
@@ -748,6 +771,102 @@ document.addEventListener('alpine:init', () => {
         this.flow.answers[answerKey] = answerValue;
         this.flow.step = opt.next;
       }
+    },
+
+    reor: {
+      specialty: '',
+      teachingType: 'professional',
+      course: 2,
+      birthYear: '',
+      courseYear: new Date().getFullYear() + 1,
+      hasCEE: false,
+      ee1: false, ee2: false, ee3: false,
+      ep1: false, ep2: false, ep3: false, ep4: false, ep5: false,
+    },
+
+    get reorSpecHasEE() {
+      if (!this.reor.specialty) return true;
+      const spec = MUSIC_SPECIALTIES.find(s => s.key === this.reor.specialty);
+      return spec ? spec.hasEE : true;
+    },
+
+    get reorCourseOptions() {
+      if (this.reor.teachingType === 'elementary') return [2, 3, 4];
+      return [1, 2, 3, 4, 5, 6];
+    },
+
+    get reorAge() {
+      if (!this.reor.birthYear || !this.reor.courseYear) return null;
+      return parseInt(this.reor.courseYear) - parseInt(this.reor.birthYear);
+    },
+
+    get reorCurrentLevel() {
+      const age = this.reorAge;
+      if (age === null) return null;
+      if (this.reor.teachingType === 'professional') return age < 18 ? 1 : 3;
+      return age < 12 ? 2 : 4;
+    },
+
+    reorLabel(courseNum, teaching) {
+      const ord = this.t('reor_course_' + courseNum);
+      return ord + ' ' + (teaching === 'professional' ? 'EP' : 'EE') + ' Música';
+    },
+
+    get reorResults() {
+      const r = this.reor;
+      if (!r.specialty || !r.birthYear || !r.courseYear) return [];
+      const spec = MUSIC_SPECIALTIES.find(s => s.key === r.specialty);
+      if (!spec) return [];
+      const isEP = r.teachingType === 'professional';
+      const examCourse = parseInt(r.course);
+      const age = this.reorAge;
+      if (age === null) return [];
+      const currentLevel = this.reorCurrentLevel;
+      const results = [];
+
+      for (let c = examCourse - 1; c >= 1; c--) {
+        const entry = { key: (isEP ? 'ep' : 'ee') + '_' + c, courseNum: c, teaching: r.teachingType, blocked: false, reason: '', warnings: [], levelChange: null };
+        if (isEP && r['ep' + c]) { entry.blocked = true; entry.reason = 'reor_reason_passed'; }
+        else if (!isEP) {
+          if (r.hasCEE) { entry.blocked = true; entry.reason = 'reor_reason_cee'; }
+          else if (r['ee' + c]) { entry.blocked = true; entry.reason = 'reor_reason_passed'; }
+        }
+        if (!isEP && !entry.blocked) {
+          if (age < 7) { entry.blocked = true; entry.reason = 'reor_reason_young'; }
+          else if (age === 7 && c > 1) { entry.blocked = true; entry.reason = 'reor_reason_young'; }
+          else if (age === 7 && c === 1) entry.warnings.push('reor_warn_aacc');
+        }
+        if (!isEP && c === 1 && !entry.blocked) {
+          entry.warnings.push('reor_warn_specialty');
+          if (age < 12) entry.warnings.push('reor_warn_act');
+        }
+        if (!entry.blocked) entry.warnings.push('reor_warn_permanence');
+        results.push(entry);
+      }
+
+      if (isEP) {
+        const eeLevel = age < 12 ? 2 : 4;
+        const levelChange = currentLevel !== eeLevel ? { from: currentLevel, to: eeLevel } : null;
+        const maxEECourse = spec.hasEE ? 4 : 1;
+        for (let c = maxEECourse; c >= 1; c--) {
+          const entry = { key: 'ee_' + c, courseNum: c, teaching: 'elementary', blocked: false, reason: '', warnings: [], levelChange: levelChange };
+          if (r.hasCEE) { entry.blocked = true; entry.reason = 'reor_reason_cee'; }
+          else if (r['ee' + c]) { entry.blocked = true; entry.reason = 'reor_reason_passed'; }
+          else if (!spec.hasEE && c > 1) { entry.blocked = true; entry.reason = 'reor_reason_no_ee'; }
+          if (!entry.blocked) {
+            if (age < 7) { entry.blocked = true; entry.reason = 'reor_reason_young'; }
+            else if (age === 7 && c > 1) { entry.blocked = true; entry.reason = 'reor_reason_young'; }
+            else if (age === 7 && c === 1) entry.warnings.push('reor_warn_aacc');
+          }
+          if (c === 1 && !entry.blocked) {
+            entry.warnings.push('reor_warn_specialty');
+            if (age < 12) entry.warnings.push('reor_warn_act');
+          }
+          if (!entry.blocked) entry.warnings.push('reor_warn_permanence');
+          results.push(entry);
+        }
+      }
+      return results;
     },
   });
 });

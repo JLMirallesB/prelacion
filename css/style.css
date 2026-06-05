@@ -1345,6 +1345,172 @@ body {
   margin: 0;
 }
 
+/* --- Reorientation --- */
+.reor-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.reor-intro {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: 1.5rem;
+}
+
+.reor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.reor-field label {
+  display: block;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  margin-bottom: 0.25rem;
+}
+
+.reor-field select,
+.reor-field input {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: var(--font-size-base);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.reor-field-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.reor-field-row .reor-field {
+  flex: 1;
+}
+
+.reor-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.reor-checks label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+}
+
+.reor-checks input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--color-accent);
+}
+
+.reor-field-note {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+.reor-results h4 {
+  margin-bottom: 0.75rem;
+}
+
+.reor-divider {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-accent);
+  padding: 0.75rem 0 0.4rem;
+  border-top: 1px dashed var(--color-border);
+  margin-top: 0.5rem;
+}
+
+.reor-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-bottom: 0.4rem;
+  background: var(--color-bg);
+}
+
+.reor-row-blocked {
+  opacity: 0.55;
+}
+
+.reor-row-course {
+  font-weight: 700;
+  min-width: 10rem;
+}
+
+.reor-row-status {
+  min-width: 10rem;
+}
+
+.reor-badge {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.reor-badge-ok {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.reor-badge-warn {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.reor-badge-blocked {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+[data-theme="dark"] .reor-badge-ok { background: #14532d; color: #bbf7d0; }
+[data-theme="dark"] .reor-badge-warn { background: #713f12; color: #fef08a; }
+[data-theme="dark"] .reor-badge-blocked { background: #7f1d1d; color: #fecaca; }
+
+.reor-row-notes {
+  flex: 1;
+  min-width: 0;
+}
+
+.reor-reason {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.reor-warning {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  padding-left: 0.5rem;
+  border-left: 2px solid #f59e0b;
+  margin-top: 0.2rem;
+}
+
+.reor-level-change {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.reor-level-change .level-badge {
+  font-size: var(--font-size-xs);
+}
+
 /* --- Footer --- */
 .footer {
   max-width: var(--max-width);

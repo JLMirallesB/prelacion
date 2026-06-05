@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prelación — Admisión Conservatorios CV</title>
-  <link rel="stylesheet" href="css/style.css?v=1.0.1">
-  <script src="js/i18n.js"></script>
-  <script src="js/app.js"></script>
+  <link rel="stylesheet" href="css/style.css?v=1.0.3">
+  <script src="js/i18n.js?v=1.0.3"></script>
+  <script src="js/app.js?v=1.0.3"></script>
   <script src="js/collapse.min.js" defer></script>
   <script src="js/alpine.min.js" defer></script>
 </head>
@@ -50,6 +50,11 @@
                   :class="{ active: $store.app.view === 'age' }"
                   @click="$store.app.setView('age')"
                   x-text="$store.app.t('viewAge')"></button>
+          <button role="tab"
+                  :aria-selected="$store.app.view === 'reor'"
+                  :class="{ active: $store.app.view === 'reor' }"
+                  @click="$store.app.setView('reor')"
+                  x-text="$store.app.t('viewReor')"></button>
           <button role="tab"
                   :aria-selected="$store.app.view === 'defs'"
                   :class="{ active: $store.app.view === 'defs' }"
@@ -771,6 +776,179 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- ==================== REORIENTATION VIEW ==================== -->
+    <div x-show="$store.app.view === 'reor'">
+
+      <div class="reor-section">
+        <h3 x-text="$store.app.t('reor_title')"></h3>
+        <p class="reor-intro" x-text="$store.app.t('reor_intro')"></p>
+
+        <div class="reor-form">
+
+          <!-- Especialidad -->
+          <div class="reor-field">
+            <label x-text="$store.app.t('reor_select_spec')"></label>
+            <select x-model="$store.app.reor.specialty" @change="if(!$store.app.reorSpecHasEE) $store.app.reor.teachingType='professional'">
+              <option value="" disabled x-text="'— ' + $store.app.t('reor_select_spec') + ' —'"></option>
+              <optgroup :label="$store.app.t('reor_group_ee')">
+                <option value="piano" x-text="$store.app.t('spec_piano')"></option>
+                <option value="violin" x-text="$store.app.t('spec_violin')"></option>
+                <option value="viola" x-text="$store.app.t('spec_viola')"></option>
+                <option value="cello" x-text="$store.app.t('spec_cello')"></option>
+                <option value="doublebass" x-text="$store.app.t('spec_doublebass')"></option>
+                <option value="flute" x-text="$store.app.t('spec_flute')"></option>
+                <option value="oboe" x-text="$store.app.t('spec_oboe')"></option>
+                <option value="clarinet" x-text="$store.app.t('spec_clarinet')"></option>
+                <option value="bassoon" x-text="$store.app.t('spec_bassoon')"></option>
+                <option value="saxophone" x-text="$store.app.t('spec_saxophone')"></option>
+                <option value="horn" x-text="$store.app.t('spec_horn')"></option>
+                <option value="trumpet" x-text="$store.app.t('spec_trumpet')"></option>
+                <option value="trombone" x-text="$store.app.t('spec_trombone')"></option>
+                <option value="tuba" x-text="$store.app.t('spec_tuba')"></option>
+                <option value="percussion" x-text="$store.app.t('spec_percussion')"></option>
+                <option value="guitar" x-text="$store.app.t('spec_guitar')"></option>
+                <option value="harp" x-text="$store.app.t('spec_harp')"></option>
+              </optgroup>
+              <optgroup :label="$store.app.t('reor_group_ep_only')">
+                <option value="singing" x-text="$store.app.t('spec_singing')"></option>
+                <option value="electric_guitar" x-text="$store.app.t('spec_electric_guitar')"></option>
+                <option value="electric_bass" x-text="$store.app.t('spec_electric_bass')"></option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Enseñanzas -->
+          <div class="reor-field" x-show="$store.app.reorSpecHasEE">
+            <label x-text="$store.app.t('reor_teaching')"></label>
+            <div class="age-calc-toggle">
+              <button :class="{ active: $store.app.reor.teachingType === 'elementary' }"
+                      @click="$store.app.reor.teachingType = 'elementary'; if($store.app.reor.course < 2 || $store.app.reor.course > 4) $store.app.reor.course = 2"
+                      x-text="$store.app.t('flowA_elementary')"></button>
+              <button :class="{ active: $store.app.reor.teachingType === 'professional' }"
+                      @click="$store.app.reor.teachingType = 'professional'"
+                      x-text="$store.app.t('flowA_professional')"></button>
+            </div>
+          </div>
+
+          <!-- Curso -->
+          <div class="reor-field">
+            <label x-text="$store.app.t('reor_course')"></label>
+            <select x-model.number="$store.app.reor.course">
+              <template x-for="c in $store.app.reorCourseOptions" :key="c">
+                <option :value="c" x-text="$store.app.t('reor_course_' + c)"></option>
+              </template>
+            </select>
+          </div>
+
+          <!-- Año nacimiento + Año curso -->
+          <div class="reor-field-row">
+            <div class="reor-field">
+              <label x-text="$store.app.t('reor_birth')"></label>
+              <input type="number" x-model.number="$store.app.reor.birthYear" min="1950" max="2040" placeholder="2015">
+            </div>
+            <div class="reor-field">
+              <label x-text="$store.app.t('reor_year')"></label>
+              <input type="number" x-model.number="$store.app.reor.courseYear" min="2020" max="2040">
+            </div>
+          </div>
+
+          <!-- CEE -->
+          <div class="reor-field">
+            <label x-text="$store.app.t('reor_cee')"></label>
+            <div class="age-calc-toggle">
+              <button :class="{ active: !$store.app.reor.hasCEE }" @click="$store.app.reor.hasCEE = false" x-text="$store.app.t('reor_no')"></button>
+              <button :class="{ active: $store.app.reor.hasCEE }" @click="$store.app.reor.hasCEE = true" x-text="$store.app.t('reor_yes')"></button>
+            </div>
+            <p class="reor-field-note" x-text="$store.app.t('reor_cee_note')"></p>
+          </div>
+
+          <!-- Cursos de EE superados -->
+          <div class="reor-field" x-show="!$store.app.reor.hasCEE && $store.app.reorSpecHasEE">
+            <label x-text="$store.app.t('reor_ee_passed')"></label>
+            <div class="reor-checks">
+              <label><input type="checkbox" x-model="$store.app.reor.ee1"> <span x-text="$store.app.t('reor_course_1')"></span></label>
+              <label><input type="checkbox" x-model="$store.app.reor.ee2"> <span x-text="$store.app.t('reor_course_2')"></span></label>
+              <label><input type="checkbox" x-model="$store.app.reor.ee3"> <span x-text="$store.app.t('reor_course_3')"></span></label>
+            </div>
+          </div>
+
+          <!-- 1.º EE superado (especialidades solo-EP) -->
+          <div class="reor-field" x-show="!$store.app.reor.hasCEE && !$store.app.reorSpecHasEE">
+            <label x-text="$store.app.t('reor_ee1_eponly')"></label>
+            <div class="age-calc-toggle">
+              <button :class="{ active: !$store.app.reor.ee1 }" @click="$store.app.reor.ee1 = false" x-text="$store.app.t('reor_no')"></button>
+              <button :class="{ active: $store.app.reor.ee1 }" @click="$store.app.reor.ee1 = true" x-text="$store.app.t('reor_yes')"></button>
+            </div>
+          </div>
+
+          <!-- Cursos de EP superados -->
+          <div class="reor-field" x-show="$store.app.reor.teachingType === 'professional'">
+            <label x-text="$store.app.t('reor_ep_passed')"></label>
+            <div class="reor-checks">
+              <label><input type="checkbox" x-model="$store.app.reor.ep1"> <span x-text="$store.app.t('reor_course_1')"></span></label>
+              <label><input type="checkbox" x-model="$store.app.reor.ep2"> <span x-text="$store.app.t('reor_course_2')"></span></label>
+              <label><input type="checkbox" x-model="$store.app.reor.ep3"> <span x-text="$store.app.t('reor_course_3')"></span></label>
+              <label><input type="checkbox" x-model="$store.app.reor.ep4"> <span x-text="$store.app.t('reor_course_4')"></span></label>
+              <label><input type="checkbox" x-model="$store.app.reor.ep5"> <span x-text="$store.app.t('reor_course_5')"></span></label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Resultados -->
+        <template x-if="$store.app.reorResults.length > 0">
+          <div class="reor-results">
+            <h4 x-text="$store.app.t('reor_results_title')"></h4>
+
+            <!-- Dentro de la misma enseñanza -->
+            <template x-for="r in $store.app.reorResults.filter(x => x.teaching === $store.app.reor.teachingType)" :key="r.key">
+              <div class="reor-row" :class="{ 'reor-row-blocked': r.blocked }">
+                <div class="reor-row-course" x-text="$store.app.reorLabel(r.courseNum, r.teaching)"></div>
+                <div class="reor-row-status">
+                  <span class="reor-badge" :class="r.blocked ? 'reor-badge-blocked' : (r.warnings.length ? 'reor-badge-warn' : 'reor-badge-ok')"
+                        x-text="$store.app.t(r.blocked ? 'reor_blocked' : 'reor_possible')"></span>
+                </div>
+                <div class="reor-row-notes">
+                  <template x-if="r.blocked"><span class="reor-reason" x-text="$store.app.t(r.reason)"></span></template>
+                  <template x-for="w in r.warnings" :key="w"><div class="reor-warning" x-text="$store.app.t(w)"></div></template>
+                </div>
+              </div>
+            </template>
+
+            <!-- Cruce EP → EE -->
+            <template x-if="$store.app.reor.teachingType === 'professional' && $store.app.reorResults.some(x => x.teaching === 'elementary')">
+              <div>
+                <div class="reor-divider" x-text="'↓ ' + $store.app.t('reor_ee_section')"></div>
+                <template x-for="r in $store.app.reorResults.filter(x => x.teaching === 'elementary')" :key="r.key">
+                  <div class="reor-row" :class="{ 'reor-row-blocked': r.blocked }">
+                    <div class="reor-row-course" x-text="$store.app.reorLabel(r.courseNum, r.teaching)"></div>
+                    <div class="reor-row-status">
+                      <span class="reor-badge" :class="r.blocked ? 'reor-badge-blocked' : (r.warnings.length ? 'reor-badge-warn' : 'reor-badge-ok')"
+                            x-text="$store.app.t(r.blocked ? 'reor_blocked' : 'reor_possible')"></span>
+                    </div>
+                    <div class="reor-row-notes">
+                      <template x-if="r.blocked"><span class="reor-reason" x-text="$store.app.t(r.reason)"></span></template>
+                      <template x-if="!r.blocked && r.levelChange">
+                        <div class="reor-level-change">
+                          <span x-text="$store.app.t('reor_warn_level') + ': '"></span>
+                          <span class="level-badge" :class="'level-badge-' + r.levelChange.from" x-text="r.levelChange.from"></span>
+                          <span> → </span>
+                          <span class="level-badge" :class="'level-badge-' + r.levelChange.to" x-text="r.levelChange.to"></span>
+                        </div>
+                      </template>
+                      <template x-for="w in r.warnings" :key="w"><div class="reor-warning" x-text="$store.app.t(w)"></div></template>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </template>
+
+          </div>
+        </template>
+
+      </div>
     </div>
 
     <!-- ==================== DEFINITIONS VIEW ==================== -->
