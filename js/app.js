@@ -780,7 +780,7 @@ document.addEventListener('alpine:init', () => {
       birthYear: '',
       courseYear: new Date().getFullYear() + 1,
       hasCEE: false,
-      ee1: false, ee2: false, ee3: false,
+      ee1: false, ee2: false, ee3: false, did1stEE: false,
       ep1: false, ep2: false, ep3: false, ep4: false, ep5: false,
     },
 
@@ -838,6 +838,8 @@ document.addEventListener('alpine:init', () => {
         }
         if (!isEP && c === 1 && !entry.blocked) {
           entry.warnings.push('reor_warn_specialty');
+          if (r.did1stEE) entry.warnings.push('reor_warn_did1st');
+          if (spec.hasEE && (r.ee2 || r.ee3)) entry.warnings.push('reor_warn_no_same_spec');
           if (age < 12) entry.warnings.push('reor_warn_act');
         }
         if (!entry.blocked) entry.warnings.push('reor_warn_permanence');
@@ -860,6 +862,8 @@ document.addEventListener('alpine:init', () => {
           }
           if (c === 1 && !entry.blocked) {
             entry.warnings.push('reor_warn_specialty');
+            if (r.did1stEE) entry.warnings.push('reor_warn_did1st');
+            if (spec.hasEE && (r.ee2 || r.ee3)) entry.warnings.push('reor_warn_no_same_spec');
             if (age < 12) entry.warnings.push('reor_warn_act');
           }
           if (!entry.blocked) entry.warnings.push('reor_warn_permanence');
