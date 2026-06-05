@@ -1560,12 +1560,13 @@ body {
   .view-toggle {
     width: 100%;
     order: 1;
+    flex-wrap: wrap;
   }
 
   .view-toggle button {
-    flex: 1;
+    flex: 0 0 auto;
     font-size: var(--font-size-xs);
-    padding: 0.3rem 0.25rem;
+    padding: 0.3rem 0.5rem;
     text-align: center;
   }
 
