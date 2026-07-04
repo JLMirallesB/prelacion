@@ -7,9 +7,9 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Prelación — Admisión Conservatorios CV</title>
-  <link rel="stylesheet" href="css/style.css?v=1.0.5">
-  <script src="js/i18n.js?v=1.0.5"></script>
-  <script src="js/app.js?v=1.0.5"></script>
+  <link rel="stylesheet" href="css/style.css?v=1.0.6">
+  <script src="js/i18n.js?v=1.0.6"></script>
+  <script src="js/app.js?v=1.0.6"></script>
   <script src="js/collapse.min.js" defer></script>
   <script src="js/alpine.min.js" defer></script>
 </head>
@@ -698,6 +698,10 @@
           <div class="age-calc-field">
             <label for="calc-year" x-text="$store.app.t('age_calc_year')"></label>
             <input id="calc-year" type="number" x-model.number="$store.app.calc.year" min="2020" max="2040">
+            <p class="age-calc-help" x-show="$store.app.calc.year">
+              <span x-text="$store.app.t('age_calc_year_help')"></span>
+              <strong x-text="$store.app.calc.year + '/' + ($store.app.calc.year + 1)"></strong>
+            </p>
           </div>
           <div class="age-calc-field">
             <label for="calc-birth" x-text="$store.app.t('age_calc_birth')"></label>
@@ -854,6 +858,10 @@
             <div class="reor-field">
               <label x-text="$store.app.t('reor_year')"></label>
               <input type="number" x-model.number="$store.app.reor.courseYear" min="2020" max="2040">
+              <p class="reor-field-note" x-show="$store.app.reor.courseYear">
+                <span x-text="$store.app.t('age_calc_year_help')"></span>
+                <strong x-text="' ' + $store.app.reor.courseYear + '/' + ($store.app.reor.courseYear + 1)"></strong>
+              </p>
             </div>
           </div>
 

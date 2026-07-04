@@ -552,7 +552,7 @@ document.addEventListener('alpine:init', () => {
     shareCopied: false,
     calcCopied: false,
     calc: {
-      year: new Date().getFullYear() + 1,
+      year: new Date().getFullYear(),
       birth: '',
       type: 'elementary',
     },
@@ -778,7 +778,7 @@ document.addEventListener('alpine:init', () => {
       teachingType: 'professional',
       course: 2,
       birthYear: '',
-      courseYear: new Date().getFullYear() + 1,
+      courseYear: new Date().getFullYear(),
       hasCEE: false,
       ee1: false, ee2: false, ee3: false, did1stEE: false,
       ep1: false, ep2: false, ep3: false, ep4: false, ep5: false,

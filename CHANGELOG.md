@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.3
+
+- Renombrado el campo "Año de inicio del curso" a "Año de la prueba de acceso" para evitar confusión (calculadora de edad y reorientación)
+- Añadida indicación "Da acceso al curso X/X+1" bajo el campo
+- Valor por defecto ajustado al año actual (coherente con "año de la prueba")
+
 ## v1.1.2
 
 - Corregido texto de criterio de desempate: "año de nacimiento más reciente" (literal del art. 19.2.3.º)

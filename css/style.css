@@ -1208,6 +1208,16 @@ body {
   outline-offset: -1px;
 }
 
+.age-calc-help {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+.age-calc-help strong {
+  color: var(--color-text-secondary);
+}
+
 .age-calc-toggle {
   display: flex;
   border: 1px solid var(--color-border);
