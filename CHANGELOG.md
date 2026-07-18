@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.4
+
+- Añadidas 9 especialidades a la herramienta de reorientación: Acordeón, Canto valenciano, Clavecín, Dulzaina, Flauta de pico, Instrumentos de cuerda pulsada del Renacimiento y Barroco, Instrumentos de plectro, Órgano, Viola da gamba
+- Lista completa de 29 especialidades ordenada alfabéticamente
+
 ## v1.1.3
 
 - Renombrado el campo "Año de inicio del curso" a "Año de la prueba de acceso" para evitar confusión (calculadora de edad y reorientación)

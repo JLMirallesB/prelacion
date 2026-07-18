@@ -7,9 +7,9 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Prelación — Admisión Conservatorios CV</title>
-  <link rel="stylesheet" href="css/style.css?v=1.0.6">
-  <script src="js/i18n.js?v=1.0.6"></script>
-  <script src="js/app.js?v=1.0.6"></script>
+  <link rel="stylesheet" href="css/style.css?v=1.0.7">
+  <script src="js/i18n.js?v=1.0.7"></script>
+  <script src="js/app.js?v=1.0.7"></script>
   <script src="js/collapse.min.js" defer></script>
   <script src="js/alpine.min.js" defer></script>
 </head>
@@ -800,28 +800,37 @@
             <select x-model="$store.app.reor.specialty" @change="if(!$store.app.reorSpecHasEE) $store.app.reor.teachingType='professional'">
               <option value="" disabled x-text="'— ' + $store.app.t('reor_select_spec') + ' —'"></option>
               <optgroup :label="$store.app.t('reor_group_ee')">
-                <option value="piano" x-text="$store.app.t('spec_piano')"></option>
-                <option value="violin" x-text="$store.app.t('spec_violin')"></option>
-                <option value="viola" x-text="$store.app.t('spec_viola')"></option>
-                <option value="cello" x-text="$store.app.t('spec_cello')"></option>
-                <option value="doublebass" x-text="$store.app.t('spec_doublebass')"></option>
-                <option value="flute" x-text="$store.app.t('spec_flute')"></option>
-                <option value="oboe" x-text="$store.app.t('spec_oboe')"></option>
+                <option value="accordion" x-text="$store.app.t('spec_accordion')"></option>
+                <option value="harp" x-text="$store.app.t('spec_harp')"></option>
                 <option value="clarinet" x-text="$store.app.t('spec_clarinet')"></option>
+                <option value="harpsichord" x-text="$store.app.t('spec_harpsichord')"></option>
+                <option value="doublebass" x-text="$store.app.t('spec_doublebass')"></option>
+                <option value="dulzaina" x-text="$store.app.t('spec_dulzaina')"></option>
                 <option value="bassoon" x-text="$store.app.t('spec_bassoon')"></option>
+                <option value="flute" x-text="$store.app.t('spec_flute')"></option>
+                <option value="recorder" x-text="$store.app.t('spec_recorder')"></option>
+                <option value="guitar" x-text="$store.app.t('spec_guitar')"></option>
+                <option value="early_plucked_strings" x-text="$store.app.t('spec_early_plucked_strings')"></option>
+                <option value="oboe" x-text="$store.app.t('spec_oboe')"></option>
+                <option value="percussion" x-text="$store.app.t('spec_percussion')"></option>
+                <option value="piano" x-text="$store.app.t('spec_piano')"></option>
                 <option value="saxophone" x-text="$store.app.t('spec_saxophone')"></option>
+                <option value="trombone" x-text="$store.app.t('spec_trombone')"></option>
                 <option value="horn" x-text="$store.app.t('spec_horn')"></option>
                 <option value="trumpet" x-text="$store.app.t('spec_trumpet')"></option>
-                <option value="trombone" x-text="$store.app.t('spec_trombone')"></option>
                 <option value="tuba" x-text="$store.app.t('spec_tuba')"></option>
-                <option value="percussion" x-text="$store.app.t('spec_percussion')"></option>
-                <option value="guitar" x-text="$store.app.t('spec_guitar')"></option>
-                <option value="harp" x-text="$store.app.t('spec_harp')"></option>
+                <option value="viola" x-text="$store.app.t('spec_viola')"></option>
+                <option value="viola_da_gamba" x-text="$store.app.t('spec_viola_da_gamba')"></option>
+                <option value="violin" x-text="$store.app.t('spec_violin')"></option>
+                <option value="cello" x-text="$store.app.t('spec_cello')"></option>
               </optgroup>
               <optgroup :label="$store.app.t('reor_group_ep_only')">
-                <option value="singing" x-text="$store.app.t('spec_singing')"></option>
-                <option value="electric_guitar" x-text="$store.app.t('spec_electric_guitar')"></option>
                 <option value="electric_bass" x-text="$store.app.t('spec_electric_bass')"></option>
+                <option value="singing" x-text="$store.app.t('spec_singing')"></option>
+                <option value="valencian_singing" x-text="$store.app.t('spec_valencian_singing')"></option>
+                <option value="electric_guitar" x-text="$store.app.t('spec_electric_guitar')"></option>
+                <option value="plectrum_instruments" x-text="$store.app.t('spec_plectrum_instruments')"></option>
+                <option value="organ" x-text="$store.app.t('spec_organ')"></option>
               </optgroup>
             </select>
           </div>
