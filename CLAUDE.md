@@ -23,7 +23,7 @@ python3 -m http.server 8000
 
 ## Normative Source
 
-The admission rules come from **Orden 8/2026** (arts. 18–22 primarily), accessible via the `legis-cpmdem` MCP server at `/Users/miralles/Documents/GitHub/legis_cpmdem/`. Key concepts:
+The admission rules come from **Orden 8/2026** (arts. 18–22 primarily), accessible via the `legis-cpmdem` MCP server, which lives in the sibling [legis_cpmdem](https://github.com/JLMirallesB/legis_cpmdem) repository (clone it alongside this one). Key concepts:
 
 - **4 priority levels** (art. 18): by education type (elementary/professional) and age threshold (12/18 years)
 - **Prelación within each level** (art. 19): readmission → same-center exam → specialty change (EE only)
