@@ -124,6 +124,9 @@ body {
 .header-download {
   display: inline-block;
   margin-top: 0.35rem;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
   font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--color-accent);
@@ -1353,6 +1356,117 @@ body {
   color: var(--color-text-secondary);
   line-height: 1.6;
   margin: 0;
+}
+
+/* --- Modelos descargables --- */
+.models-intro h2 {
+  font-size: var(--font-size-xl);
+  margin: 0 0 0.5rem;
+}
+
+.models-intro p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+
+.models-warn {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  background: var(--color-accent-light);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin: 0 0 1.25rem;
+}
+
+.models-warn b {
+  color: var(--color-text);
+}
+
+.models-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.model-card {
+  padding: 0.85rem 1rem;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.model-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.model-head h3 {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  margin: 0;
+}
+
+.model-size {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.model-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.model-dl {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 0.25rem 0.7rem;
+}
+
+.model-dl:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.models-notes {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.models-notes h3 {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.models-notes ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.models-notes li {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
 }
 
 /* --- Reorientation --- */

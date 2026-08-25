@@ -12,7 +12,7 @@ Visualizador interactivo del sistema de prelacion para la admision a conservator
 - **Edad**: calculadora de nivel de prioridad por edad y tipo de ensenanzas
 - **Reorientacion**: herramienta para determinar a que cursos puede ser reorientado un aspirante que no supera la parte interpretativa (art. 8.9)
 - **Definiciones**: glosario de terminos normativos con citas de la Orden
-- **Publicador de vacantes**: Excel descargable con las 23 fases de adjudicacion para equipos directivos
+- **Modelos**: cuatro libros de Excel descargables (`modelos/`) que cubren el ciclo de admision — registro de solicitudes, publicador de vacantes (23 fases), acto publico de 1.o de elemental y prelacion/listas de espera. Van en blanco, sin datos de ningun centro, y requieren Excel 365 o 2021
 
 ## Caracteristicas
 

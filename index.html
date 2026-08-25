@@ -7,9 +7,9 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Prelación — Admisión Conservatorios CV</title>
-  <link rel="stylesheet" href="css/style.css?v=1.0.7">
-  <script src="js/i18n.js?v=1.0.7"></script>
-  <script src="js/app.js?v=1.0.7"></script>
+  <link rel="stylesheet" href="css/style.css?v=1.0.9">
+  <script src="js/i18n.js?v=1.0.9"></script>
+  <script src="js/app.js?v=1.0.9"></script>
   <script src="js/collapse.min.js" defer></script>
   <script src="js/alpine.min.js" defer></script>
 </head>
@@ -26,7 +26,7 @@
             (<a href="https://dogv.gva.es/es/resultat-dogv?signatura=2026/12242" target="_blank" rel="noopener" x-text="$store.app.t('linkDogv')"></a>
             · <a href="https://jlmirallesb.github.io/legis_cpmdem/es/ley/orden-8-2026/" target="_blank" rel="noopener" x-text="$store.app.t('linkLegis')"></a>)
           </span>
-          <a class="header-download" href="PUBLICADOR VACANTES.xlsx" download x-text="$store.app.t('downloadExcel')"></a>
+          <button class="header-download" @click="$store.app.setView('modelos')" x-text="$store.app.t('downloadExcel')"></button>
         </p>
       </div>
       <div class="header-controls">
@@ -63,6 +63,11 @@
                   :class="{ active: $store.app.view === 'defs' }"
                   @click="$store.app.setView('defs')"
                   x-text="$store.app.t('viewDefs')"></button>
+          <button role="tab"
+                  :aria-selected="$store.app.view === 'modelos'"
+                  :class="{ active: $store.app.view === 'modelos' }"
+                  @click="$store.app.setView('modelos')"
+                  x-text="$store.app.t('viewModels')"></button>
         </div>
       </div>
     </div>
@@ -1020,6 +1025,70 @@
           <dd x-text="$store.app.t('def_midcourse_desc')"></dd>
         </div>
       </dl>
+    </div>
+
+    <!-- ==================== MODELOS VIEW ==================== -->
+    <div x-show="$store.app.view === 'modelos'">
+
+      <div class="models-intro">
+        <h2 x-text="$store.app.t('mod_title')"></h2>
+        <p x-text="$store.app.t('mod_lead')"></p>
+      </div>
+
+      <p class="models-warn">
+        <b x-text="$store.app.t('mod_req_title')"></b>
+        <span x-text="$store.app.t('mod_req_desc')"></span>
+      </p>
+
+      <div class="models-list">
+        <article class="model-card">
+          <div class="model-head">
+            <h3 x-text="$store.app.t('mod_reg_name')"></h3>
+            <span class="model-size">95 KB</span>
+          </div>
+          <p class="model-desc" x-text="$store.app.t('mod_reg_desc')"></p>
+          <a class="model-dl" href="modelos/Registro%20de%20solicitudes.xlsx" download x-text="$store.app.t('mod_download')"></a>
+        </article>
+
+        <article class="model-card">
+          <div class="model-head">
+            <h3 x-text="$store.app.t('mod_pub_name')"></h3>
+            <span class="model-size">179 KB</span>
+          </div>
+          <p class="model-desc" x-text="$store.app.t('mod_pub_desc')"></p>
+          <a class="model-dl" href="modelos/PUBLICADOR%20VACANTES.xlsx" download x-text="$store.app.t('mod_download')"></a>
+        </article>
+
+        <article class="model-card">
+          <div class="model-head">
+            <h3 x-text="$store.app.t('mod_acto_name')"></h3>
+            <span class="model-size">2,0 MB</span>
+          </div>
+          <p class="model-desc" x-text="$store.app.t('mod_acto_desc')"></p>
+          <a class="model-dl" href="modelos/Acto%201%20de%20Elemental.xlsx" download x-text="$store.app.t('mod_download')"></a>
+        </article>
+
+        <article class="model-card">
+          <div class="model-head">
+            <h3 x-text="$store.app.t('mod_prel_name')"></h3>
+            <span class="model-size">1,0 MB</span>
+          </div>
+          <p class="model-desc" x-text="$store.app.t('mod_prel_desc')"></p>
+          <a class="model-dl" href="modelos/PRELACI%C3%93N-LIST%20ESPERA.xlsx" download x-text="$store.app.t('mod_download')"></a>
+        </article>
+      </div>
+
+      <div class="models-notes">
+        <h3 x-text="$store.app.t('mod_notes_title')"></h3>
+        <ul>
+          <li x-text="$store.app.t('mod_note_copy')"></li>
+          <li x-text="$store.app.t('mod_note_data')"></li>
+          <li x-text="$store.app.t('mod_note_logo')"></li>
+          <li x-text="$store.app.t('mod_note_geode')"></li>
+          <li x-text="$store.app.t('mod_note_source')"></li>
+        </ul>
+      </div>
+
     </div>
 
   </main>
