@@ -6,8 +6,6 @@
 - Los ficheros `.xlsx` pasan de la raíz del repositorio a `modelos/`. El enlace anterior a `PUBLICADOR VACANTES.xlsx` en la raíz deja de funcionar
 - El enlace de la cabecera ya no descarga directamente: lleva a la pestaña «Modelos»
 - Aviso de trabajar sobre una copia y no editar el fichero descargado
-- La ficha del publicador explica por qué las 23 fases no se reparten por igual entre los cuatro niveles (arts. 19.1.3.º, 20.1, 20.2 y 20.3)
-- La ficha de prelación aclara que son 29 especialidades y que las dos hojas de Coro se conservan vacías a propósito
 
 ## v1.1.4
 
