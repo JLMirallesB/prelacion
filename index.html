@@ -732,6 +732,7 @@
               <span x-text="$store.app.t('age_calc_age')"></span>:
               <strong><span x-text="$store.app.calcAge"></span> <span x-text="$store.app.t('age_calc_years')"></span></strong>
             </div>
+            <p class="age-calc-help" x-text="$store.app.t('age_calc_cohort').replace('{year}', $store.app.calc.birth)"></p>
 
             <!-- Too young -->
             <template x-if="$store.app.calcResult && $store.app.calcResult.status === 'too_young'">
@@ -891,8 +892,8 @@
             </div>
           </div>
 
-          <!-- CEE -->
-          <div class="reor-field">
+          <!-- CEE (solo cierra la EE de su especialidad) -->
+          <div class="reor-field" x-show="$store.app.reorSpecHasEE">
             <label x-text="$store.app.t('reor_cee')"></label>
             <div class="age-calc-toggle">
               <button :class="{ active: !$store.app.reor.hasCEE }" @click="$store.app.reor.hasCEE = false" x-text="$store.app.t('reor_no')"></button>
@@ -912,7 +913,7 @@
           </div>
 
           <!-- 1.º EE superado (especialidades solo-EP) -->
-          <div class="reor-field" x-show="!$store.app.reor.hasCEE && !$store.app.reorSpecHasEE">
+          <div class="reor-field" x-show="!$store.app.reorSpecHasEE">
             <label x-text="$store.app.t('reor_ee1_eponly')"></label>
             <div class="age-calc-toggle">
               <button :class="{ active: !$store.app.reor.ee1 }" @click="$store.app.reor.ee1 = false" x-text="$store.app.t('reor_no')"></button>
@@ -920,12 +921,21 @@
             </div>
           </div>
 
-          <!-- ¿Ha cursado 1.º EE antes? -->
-          <div class="reor-field" x-show="!$store.app.reor.hasCEE && !$store.app.reor.ee1">
+          <!-- ¿Ha superado 1.º EE en otra especialidad? -->
+          <div class="reor-field" x-show="$store.app.reorSpecHasEE && !$store.app.reor.hasCEE && !$store.app.reor.ee1">
             <label x-text="$store.app.t('reor_did1st')"></label>
             <div class="age-calc-toggle">
               <button :class="{ active: !$store.app.reor.did1stEE }" @click="$store.app.reor.did1stEE = false" x-text="$store.app.t('reor_no')"></button>
               <button :class="{ active: $store.app.reor.did1stEE }" @click="$store.app.reor.did1stEE = true" x-text="$store.app.t('reor_yes')"></button>
+            </div>
+          </div>
+
+          <!-- ¿Matriculado en otra especialidad? (art. 15.2) -->
+          <div class="reor-field">
+            <label x-text="$store.app.t('reor_other_spec')"></label>
+            <div class="age-calc-toggle">
+              <button :class="{ active: !$store.app.reor.otherSpec }" @click="$store.app.reor.otherSpec = false" x-text="$store.app.t('reor_no')"></button>
+              <button :class="{ active: $store.app.reor.otherSpec }" @click="$store.app.reor.otherSpec = true" x-text="$store.app.t('reor_yes')"></button>
             </div>
           </div>
 
@@ -1023,6 +1033,18 @@
         <div class="def-item">
           <dt x-text="$store.app.t('def_midcourse')"></dt>
           <dd x-text="$store.app.t('def_midcourse_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_withdrawal')"></dt>
+          <dd x-text="$store.app.t('def_withdrawal_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_exemption')"></dt>
+          <dd x-text="$store.app.t('def_exemption_desc')"></dd>
+        </div>
+        <div class="def-item">
+          <dt x-text="$store.app.t('def_second_spec')"></dt>
+          <dd x-text="$store.app.t('def_second_spec_desc')"></dd>
         </div>
       </dl>
     </div>

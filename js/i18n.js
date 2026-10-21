@@ -35,6 +35,13 @@ window.I18N = {
     def_midcourse: 'Vacantes sobrevenidas (art. 22.3)',
     def_midcourse_desc: '«Las vacantes que se generen con el curso iniciado se adjudicarán de acuerdo con el siguiente orden: a) Hasta el 15 de diciembre: alumnado que haya superado la prueba de acceso en el mismo centro en la convocatoria ordinaria o extraordinaria sin obtener plaza [...]. b) Traslado de expediente durante el curso académico [...] siempre que existan plazas vacantes y la solicitud se presente antes de la finalización del segundo trimestre. c) Hasta el 15 de diciembre: alumnado que haya superado la prueba de acceso en otro centro y no haya obtenido plaza [...]» (art. 22.3).',
 
+    def_withdrawal: 'Renuncia de matrícula y readmisión (arts. 3.2, 12.3 y 25.2)',
+    def_withdrawal_desc: 'La renuncia es la anulación voluntaria de la matrícula presentada hasta el 30 de noviembre (art. 25.2.a). Ese curso no computa para la permanencia, pero el alumnado que renuncia «será considerado como no matriculado en el curso lectivo a efectos del cómputo para la readmisión» (art. 12.3). Como la readmisión solo cabe tras interrumpir los estudios «durante un período no superior a un curso académico, ya sea por no haberse matriculado o por haber presentado renuncia de matrícula» (art. 3.2), un curso con renuncia seguido de otro sin matrícula impide la readmisión. La baja (después del 30 de noviembre) computa como convocatoria agotada y afecta a la permanencia (art. 25.2.b), pero el curso sí cuenta como matriculado.',
+    def_exemption: 'Exención de la parte teórico-práctica (arts. 14.2 y 15.4)',
+    def_exemption_desc: '«Los aspirantes podrán solicitar la exención de la parte teórico-práctica de la prueba de acceso, siempre que tengan superadas las materias correspondientes al curso inmediatamente anterior a aquel al que se pretende acceder» (art. 15.4). Está prevista dentro de la simultaneidad de especialidades (art. 15) y del cambio de especialidad en EE (art. 14.2): se aplica a quien está matriculado en otra especialidad en el momento de la prueba y tiene superado al menos un curso completo, no a quien ya ha dejado estos estudios. Hay que solicitarla. Si se concede, la calificación final es solo la de la parte realizada. Si se hace la prueba a un mismo curso en varias especialidades, la parte teórico-práctica común se realiza una sola vez (art. 15.3).',
+    def_second_spec: 'Segunda especialidad y prueba de 1.º de EE (arts. 11.2 y 15)',
+    def_second_spec_desc: '«La superación de la prueba de acceso a primer curso de enseñanzas elementales de Música facultará únicamente la matriculación en una sola especialidad» (art. 15.1). El alumnado matriculado en EE o en EP que quiera una segunda especialidad debe acceder «para un curso distinto de primero de las enseñanzas elementales de Música» (art. 15.2), igual que quien, sin estar matriculado, quiera acceder a varias especialidades (art. 15.3). Por tanto, no puede volver a la prueba de 1.º quien ya superó 1.º de EE ni quien está matriculado en otra especialidad. Tener el CEE no implica haber cursado 1.º: quien entró directamente a un curso superior y ya no está matriculado sí puede presentarse. En ningún caso se puede estar matriculado a la vez en más de un curso de una misma especialidad (art. 15.8).',
+
     langToggle: 'Valencià',
     themeToggle: 'Modo oscuro',
     themeToggleLight: 'Modo claro',
@@ -101,7 +108,7 @@ window.I18N = {
     s_pre3_short: 'Alumnado de EE Música que ha superado 1.º y cambia de instrumento',
     s_criteria: 'Criterios de desempate: curso (mayor a menor) → calificación → año de nacimiento más reciente → sorteo público',
     s_l2b_desc: 'Acto público de adjudicación de especialidad instrumental. Los aspirantes eligen instrumento por orden de calificación entre las vacantes ofertadas (publicadas con 48 h de antelación). Quien no asista pierde su turno (art. 20.2).',
-    s_l4_note: 'Para 1.º EE Música de ≥ 12 años no se requiere acto público; la secretaría adjudica por calificación (art. 20.3).',
+    s_l4_note: 'Para 1.º EE Música de 12 años o más (en el año natural) no es necesario acto público; se adjudica por calificación y puede gestionarlo la secretaría del centro (art. 20.3).',
     s_adj2: '2.ª Adjudicación — Convocatoria ordinaria',
     s_adj2_desc: 'Plazas sobrantes de la 1.ª adjudicación. Mismos niveles de prioridad (1 > 2 > 3 > 4), diferente orden de prelación:',
     s_adj2_pre1: '1.º Traslado de expediente',
@@ -154,7 +161,7 @@ window.I18N = {
     art20Phase2Title: 'Fase 2: Primer curso EE Música — menores de 12 años (acto público)',
     art20Phase2Desc: 'Se realiza un acto público de adjudicación de vacantes y asignación de especialidad instrumental para aspirantes menores de 12 años que hayan superado la prueba. La elección se hace por orden de calificación. Las vacantes por especialidad se publican con 48 h de antelación. Los aspirantes que no asistan pierden su turno y solo optan a plazas sobrantes.',
     art20Phase3Title: 'Fase 3: Niveles 3 y 4',
-    art20Phase3Desc: 'Las vacantes restantes se ofrecen a los aspirantes de niveles 3 y 4. Para primer curso de EE Música de mayores de 12 años no es necesario acto público; la adjudicación la gestiona la secretaría del centro por calificación.',
+    art20Phase3Desc: 'Las vacantes restantes se ofrecen a los aspirantes de niveles 3 y 4. Para primer curso de EE Música de 12 años o más (en el año natural) no es necesario acto público; se adjudica por calificación y puede gestionarlo la secretaría del centro.',
 
     // Art. 21 — Segunda adjudicación
     art21Title: 'Art. 21 — Segunda adjudicación (conv. ordinaria)',
@@ -183,6 +190,7 @@ window.I18N = {
     flowA_transfer: 'Traslado de expediente',
     flowA_specialtyChange: 'Cambio de especialidad (EE Música)',
     flowA_midCourse: 'Vacante durante el curso',
+    flowA_examOtherAdmission: 'Prueba superada en otro centro, sin plaza en él',
 
     // Edad
     viewAge: 'Edad',
@@ -206,6 +214,7 @@ window.I18N = {
     age_calc_exception7: 'Tienes 7 años. Solo podrás presentarte si acreditas altas capacidades intelectuales o precocidad extraordinaria (art. 2.4, Anexo IX).',
     age_calc_level: 'Nivel de prioridad',
     age_calc_if_exception: 'Si se te autoriza la excepción, tu nivel de prioridad sería:',
+    age_calc_cohort: 'La edad se cuenta por año natural, igual que en el colegio: todas las personas nacidas en {year} tienen el mismo nivel de prioridad. Un alumno adelantado o repetidor tiene el nivel de su año de nacimiento, no el de su clase.',
 
     tl_pos_title: 'Tu posición en el orden de adjudicación',
     tl_pos_adj1_l1: '1.ª Adj. · Nivel 1',
@@ -228,6 +237,15 @@ window.I18N = {
     flowA_reNo: 'No, nunca se me ha concedido',
     result_re_blocked: 'No puedes solicitar readmisión',
     result_explain_re_blocked: '«La readmisión podrá concederse una sola vez a lo largo del conjunto de las enseñanzas elementales y profesionales de Música o de Danza» (art. 12.4). Si deseas reanudar estas enseñanzas, deberás realizar nuevamente la prueba de acceso (art. 12.9).',
+
+    flowQ_rePassed: '¿Has cursado y superado al menos un curso completo de estas enseñanzas?',
+    flowA_rePassedYes: 'Sí, tengo al menos un curso superado',
+    flowA_rePassedNo: 'No, no superé ningún curso',
+    result_explain_re_nocourse: 'La readmisión exige haber cursado y superado al menos un curso de estas enseñanzas (art. 3.2). «No se considerará readmisión la solicitud presentada tras el abandono de estas enseñanzas sin haber superado ningún curso» (art. 12.8). Para reanudar los estudios debes realizar de nuevo la prueba de acceso (art. 12.9).',
+    flowQ_reGap: '¿Cuántos cursos académicos seguidos llevas sin matrícula? Cuenta también el curso en que renunciaste a la matrícula.',
+    flowA_reGapOne: 'Uno solo',
+    flowA_reGapMore: 'Más de uno',
+    result_explain_re_gap: 'La readmisión solo cabe si has interrumpido los estudios «durante un período no superior a un curso académico, ya sea por no haberse matriculado o por haber presentado renuncia de matrícula» (art. 3.2; art. 12.1). El curso con renuncia cuenta como no matriculado a efectos de readmisión (art. 12.3). Debes realizar de nuevo la prueba de acceso (art. 12.9).',
 
     flowQ_midOrdinary: '¿Se ha completado ya la convocatoria ordinaria de admisión en el centro?',
     flowA_midYes: 'Sí, ya se ha realizado',
@@ -297,7 +315,7 @@ window.I18N = {
 
     result_explain_newAdmission: 'Has superado la prueba de acceso en el centro donde solicitas plaza. Tu adjudicación se resuelve en la primera adjudicación de la convocatoria ordinaria, dentro de tu nivel de prioridad y en la 2.ª posición del orden de prelación (art. 19.1.2.º).',
     result_explain_newAdmission_1stMusic_under12: 'Has superado la prueba de acceso a primer curso de enseñanzas elementales de Música. Como menor de 12 años, participas en el acto público de adjudicación de especialidad instrumental (Fase 2, art. 20.2), donde elegirás instrumento por orden de calificación.',
-    result_explain_newAdmission_1stMusic_over12: 'Has superado la prueba de acceso a primer curso de enseñanzas elementales de Música con 12 años o más. Tu adjudicación se realiza en la Fase 3, sin acto público; la secretaría del centro gestiona la asignación por calificación (art. 20.3).',
+    result_explain_newAdmission_1stMusic_over12: 'Has superado la prueba de acceso a primer curso de enseñanzas elementales de Música con 12 años o más. Tu adjudicación se realiza en la Fase 3, sin acto público: se asigna por calificación y puede gestionarla la secretaría del centro (art. 20.3).',
     result_explain_readmission_same: 'Solicitas readmisión en tu mismo centro. Tienes la máxima prioridad dentro de tu nivel (1.ª posición en el orden de prelación, art. 19.1.1.º). La readmisión solo puede concederse una vez en el conjunto de EE y EP (art. 12.4).',
     result_explain_readmission_other: 'Solicitas readmisión en un centro diferente al que estuviste matriculado/a, porque tu centro no puede ofrecerte plaza. Tu solicitud se resuelve en la segunda adjudicación (art. 21), en la 2.ª posición del orden de prelación de dicha adjudicación.',
     result_explain_transfer_admission: 'Solicitas traslado de expediente a otro centro durante el proceso de admisión. Se resuelve en la segunda adjudicación de la convocatoria ordinaria (art. 21), con la máxima prioridad dentro de esta (1.ª posición).',
@@ -306,6 +324,7 @@ window.I18N = {
     result_explain_midcourse_same: 'Estás en lista de espera del mismo centro donde superaste la prueba de acceso (convocatoria ordinaria o extraordinaria). Las vacantes generadas durante el curso se te adjudican hasta el 15 de diciembre, según el orden de los arts. 18 y 19 (art. 22.3.a).',
     result_explain_midcourse_other: 'Estás en lista de espera habiendo superado la prueba en otro centro. Las vacantes generadas durante el curso se te adjudican hasta el 15 de diciembre, pero después de agotar la lista del propio centro (art. 22.3.c).',
 
+    result_explain_exam_other: 'Has superado la prueba de acceso en otro centro y allí no has obtenido plaza. Puedes optar a plaza en este centro en el mismo curso y especialidad (art. 2.6). Tu solicitud se resuelve en la segunda adjudicación (art. 21), en la 3.ª posición de su orden de prelación y dentro de tu nivel de prioridad.',
     // Labels for answers breadcrumb
     label_context: 'Situación',
     label_studyType: 'Enseñanzas',
@@ -316,6 +335,7 @@ window.I18N = {
     label_midCourseType: 'Tipo de lista de espera',
 
     val_new: 'Nueva admisión',
+    val_examOther: 'Prueba en otro centro',
     val_readmission: 'Readmisión',
     val_transfer: 'Traslado',
     val_specialty: 'Cambio especialidad',
@@ -340,7 +360,7 @@ window.I18N = {
     // Reorientación
     viewReor: 'Reorientación',
     reor_title: 'Reorientación en pruebas de acceso',
-    reor_intro: 'Cuando el aspirante no supera la parte interpretativa de la prueba de acceso, el tribunal puede reorientar su acceso a un curso inferior (art. 8.9). Introduce los datos para ver las opciones disponibles.',
+    reor_intro: 'Cuando el aspirante no supera la parte interpretativa de la prueba de acceso, el tribunal puede proponerle un curso inferior al solicitado, también de EP a EE, siempre que no lo tenga superado ni haya agotado la permanencia (art. 8.9.1). Se propone al terminar la interpretación y requiere la aceptación expresa del aspirante o de sus representantes legales antes de la parte teórico-práctica (art. 8.9.5); si la acepta, continúa la prueba con los ejercicios del curso propuesto (art. 8.9.2). Introduce los datos para ver las opciones disponibles.',
     reor_select_spec: 'Selecciona especialidad',
     reor_group_ee: 'Con enseñanzas elementales',
     reor_group_ep_only: 'Solo enseñanzas profesionales',
@@ -348,8 +368,8 @@ window.I18N = {
     reor_course: 'Curso de la prueba',
     reor_birth: 'Año de nacimiento',
     reor_year: 'Año de la prueba de acceso',
-    reor_cee: '¿Posee el Certificado de Enseñanzas Elementales (CEE)?',
-    reor_cee_note: 'Desde el curso 2025-2026, se obtiene automáticamente al superar la PPAA a enseñanzas profesionales (art. 11.3)',
+    reor_cee: '¿Posee el Certificado de Enseñanzas Elementales (CEE) en esta especialidad?',
+    reor_cee_note: 'Superar la prueba de acceso a EP en un conservatorio permite solicitar directamente el CEE (art. 11.3). Tener el CEE no implica haber cursado 1.º de EE.',
     reor_ee_passed: 'Cursos de EE superados en esta especialidad',
     reor_ee1_eponly: '¿Ha superado 1.º de EE Música en cualquier especialidad?',
     reor_ep_passed: 'Cursos de EP superados en esta especialidad',
@@ -360,17 +380,19 @@ window.I18N = {
     reor_possible: 'Reorientación posible',
     reor_blocked: 'No es posible',
     reor_reason_passed: 'Curso ya superado (art. 2.2, art. 8.9.1)',
-    reor_reason_cee: 'Posee el CEE — todos los cursos de EE superados',
+    reor_reason_cee: 'Posee el CEE en esta especialidad: todos sus cursos de EE están superados',
     reor_reason_young: 'No cumple la edad mínima para EE (art. 2.3)',
+    reor_reason_passed_1st: 'Ya superó 1.º de EE en otra especialidad: la prueba de 1.º solo da acceso a una especialidad (arts. 11.2 y 15.1)',
+    reor_reason_other_spec: 'Matriculado/a en otra especialidad: una segunda especialidad no puede empezar en 1.º de EE (art. 15.2)',
     reor_reason_no_ee: 'Esta especialidad no tiene currículo en EE',
     reor_warn_level: 'Cambio de nivel de prioridad',
     reor_warn_specialty: 'Pierde la vinculación a la especialidad instrumental (art. 8.9.3). Mismas condiciones que el resto de aspirantes a 1.º EE.',
     reor_warn_aacc: 'Solo posible con 7 años si acredita AACC o precocidad extraordinaria (art. 2.4)',
     reor_warn_permanence: 'Comprobar que no se ha agotado el límite de permanencia (art. 8.9.1)',
-    reor_warn_did1st: 'Ya cursó 1.º de EE anteriormente — verificar que no haya superado el curso ni agotado la permanencia',
     reor_warn_no_same_spec: 'No podrá matricularse en la especialidad actual, al tener cursos superiores superados en ella — deberá elegir otra especialidad en el acto público',
     reor_warn_act: 'Si < 12 años: participa en acto público de elección de instrumento (art. 20.2)',
-    reor_did1st: '¿Ha cursado anteriormente 1.º de EE Música (en cualquier especialidad)?',
+    reor_did1st: '¿Ha superado 1.º de EE Música en otra especialidad?',
+    reor_other_spec: '¿Está matriculado/a actualmente en otra especialidad, de EE o de EP?',
     reor_course_1: '1.º',
     reor_course_2: '2.º',
     reor_course_3: '3.º',
@@ -444,6 +466,13 @@ window.I18N = {
     def_midcourse: 'Vacants sobrevingudes (art. 22.3)',
     def_midcourse_desc: '«Les vacants que es generen amb el curs iniciat s\'adjudicaran d\'acord amb el següent ordre: a) Fins al 15 de desembre: alumnat que haja superat la prova d\'accés en el mateix centre en la convocatòria ordinària o extraordinària sense obtindre plaça [...]. b) Trasllat d\'expedient durant el curs acadèmic [...] sempre que existisquen places vacants i la sol·licitud es presente abans de la finalització del segon trimestre. c) Fins al 15 de desembre: alumnat que haja superat la prova d\'accés en un altre centre i no haja obtingut plaça [...]» (art. 22.3).',
 
+    def_withdrawal: 'Renúncia de matrícula i readmissió (arts. 3.2, 12.3 i 25.2)',
+    def_withdrawal_desc: 'La renúncia és l\'anul·lació voluntària de la matrícula presentada fins al 30 de novembre (art. 25.2.a). Eixe curs no computa per a la permanència, però l\'alumnat que renuncia «serà considerat no matriculat en el curs lectiu a l\'efecte del còmput per a la readmissió» (art. 12.3). Com que la readmissió només és possible després d\'interrompre els estudis «durant un període no superior a un curs acadèmic, siga per no haver-se matriculat o per haver presentat la renúncia de matrícula» (art. 3.2), un curs amb renúncia seguit d\'un altre sense matrícula impedix la readmissió. La baixa (després del 30 de novembre) computa com a convocatòria esgotada i afecta la permanència (art. 25.2.b), però el curs sí que compta com a matriculat.',
+    def_exemption: 'Exempció de la part teoricopràctica (arts. 14.2 i 15.4)',
+    def_exemption_desc: '«Els aspirants podran sol·licitar l\'exempció de la part teoricopràctica de la prova d\'accés, sempre que tinguen superades les matèries corresponents al curs immediatament anterior a aquell al qual es pretén accedir» (art. 15.4). Està prevista dins de la simultaneïtat d\'especialitats (art. 15) i del canvi d\'especialitat en EE (art. 14.2): s\'aplica a qui està matriculat en una altra especialitat en el moment de la prova i té superat almenys un curs complet, no a qui ja ha deixat estos estudis. Cal sol·licitar-la. Si es concedix, la qualificació final és només la de la part realitzada. Si es fa la prova a un mateix curs en diverses especialitats, la part teoricopràctica comuna es fa una sola vegada (art. 15.3).',
+    def_second_spec: 'Segona especialitat i prova de 1r d\'EE (arts. 11.2 i 15)',
+    def_second_spec_desc: '«La superació de la prova d\'accés al primer curs d\'ensenyances elementals de Música facultarà únicament la matriculació en una sola especialitat» (art. 15.1). L\'alumnat matriculat en EE o en EP que vullga una segona especialitat ha d\'accedir-hi «per a un curs diferent del primer de les ensenyances elementals de Música» (art. 15.2), igual que qui, sense estar matriculat, vullga accedir a diverses especialitats (art. 15.3). Per tant, no pot tornar a la prova de 1r qui ja va superar 1r d\'EE ni qui està matriculat en una altra especialitat. Tindre el CEE no implica haver cursat 1r: qui va entrar directament a un curs superior i ja no està matriculat sí que pot presentar-s\'hi. En cap cas es pot estar matriculat alhora en més d\'un curs d\'una mateixa especialitat (art. 15.8).',
+
     langToggle: 'Castellano',
     themeToggle: 'Mode fosc',
     themeToggleLight: 'Mode clar',
@@ -510,7 +539,7 @@ window.I18N = {
     s_pre3_short: 'Alumnat d\'EE Música que ha superat 1r i canvia d\'instrument',
     s_criteria: 'Criteris de desempat: curs (major a menor) → qualificació → any de naixement més recent → sorteig públic',
     s_l2b_desc: 'Acte públic d\'adjudicació d\'especialitat instrumental. Els aspirants trien instrument per ordre de qualificació entre les vacants ofertades (publicades amb 48 h d\'antelació). Qui no assistisca perd el seu torn (art. 20.2).',
-    s_l4_note: 'Per a 1r EE Música de ≥ 12 anys no es requereix acte públic; la secretaria adjudica per qualificació (art. 20.3).',
+    s_l4_note: 'Per a 1r EE Música de 12 anys o més (en l\'any natural) no cal acte públic; s\'adjudica per qualificació i pot gestionar-ho la secretaria del centre (art. 20.3).',
     s_adj2: '2a Adjudicació — Convocatòria ordinària',
     s_adj2_desc: 'Places sobrants de la 1a adjudicació. Mateixos nivells de prioritat (1 > 2 > 3 > 4), diferent ordre de prelació:',
     s_adj2_pre1: '1r Trasllat d\'expedient',
@@ -563,7 +592,7 @@ window.I18N = {
     art20Phase2Title: 'Fase 2: Primer curs EE Música — menors de 12 anys (acte públic)',
     art20Phase2Desc: 'Es realitza un acte públic d\'adjudicació de vacants i assignació d\'especialitat instrumental per a aspirants menors de 12 anys que hagen superat la prova. L\'elecció es fa per ordre de qualificació. Les vacants per especialitat es publiquen amb 48 h d\'antelació. Els aspirants que no assistisquen perden el seu torn i només opten a places sobrants.',
     art20Phase3Title: 'Fase 3: Nivells 3 i 4',
-    art20Phase3Desc: 'Les vacants restants s\'ofereixen als aspirants de nivells 3 i 4. Per a primer curs d\'EE Música de majors de 12 anys no cal acte públic; la secretaria del centre gestiona l\'assignació per qualificació (art. 20.3).',
+    art20Phase3Desc: 'Les vacants restants s\'ofereixen als aspirants de nivells 3 i 4. Per a primer curs d\'EE Música de 12 anys o més (en l\'any natural) no cal acte públic; s\'adjudica per qualificació i pot gestionar-ho la secretaria del centre (art. 20.3).',
 
     // Art. 21 — Segona adjudicació
     art21Title: 'Art. 21 — Segona adjudicació (conv. ordinària)',
@@ -592,6 +621,7 @@ window.I18N = {
     flowA_transfer: 'Trasllat d\'expedient',
     flowA_specialtyChange: 'Canvi d\'especialitat (EE Música)',
     flowA_midCourse: 'Vacant durant el curs',
+    flowA_examOtherAdmission: 'Prova superada en un altre centre, sense plaça allí',
 
     // Edat
     viewAge: 'Edat',
@@ -615,6 +645,7 @@ window.I18N = {
     age_calc_exception7: 'Tens 7 anys. Només podràs presentar-te si acredites altes capacitats intel·lectuals o precocitat extraordinària (art. 2.4, Annex IX).',
     age_calc_level: 'Nivell de prioritat',
     age_calc_if_exception: 'Si se t\'autoritza l\'excepció, el teu nivell de prioritat seria:',
+    age_calc_cohort: 'L\'edat es compta per any natural, igual que en el col·legi: totes les persones nascudes en {year} tenen el mateix nivell de prioritat. Un alumne avançat o repetidor té el nivell del seu any de naixement, no el de la seua classe.',
 
     tl_pos_title: 'La teua posició en l\'ordre d\'adjudicació',
     tl_pos_adj1_l1: '1a Adj. · Nivell 1',
@@ -637,6 +668,15 @@ window.I18N = {
     flowA_reNo: 'No, mai se m\'ha concedit',
     result_re_blocked: 'No pots sol·licitar readmissió',
     result_explain_re_blocked: '«La readmissió podrà concedir-se una sola vegada al llarg del conjunt dels ensenyaments elementals i professionals de Música o de Dansa» (art. 12.4). Si desitges reprendre estos ensenyaments, hauràs de realitzar novament la prova d\'accés (art. 12.9).',
+
+    flowQ_rePassed: 'Has cursat i superat almenys un curs complet d\'estos ensenyaments?',
+    flowA_rePassedYes: 'Sí, tinc almenys un curs superat',
+    flowA_rePassedNo: 'No, no vaig superar cap curs',
+    result_explain_re_nocourse: 'La readmissió exigix haver cursat i superat almenys un curs d\'estos ensenyaments (art. 3.2). «No es considerarà readmissió la sol·licitud presentada després de l\'abandó d\'estes ensenyances sense haver superat cap curs» (art. 12.8). Per a reprendre els estudis has de realitzar novament la prova d\'accés (art. 12.9).',
+    flowQ_reGap: 'Quants cursos acadèmics seguits portes sense matrícula? Compta també el curs en què vas renunciar a la matrícula.',
+    flowA_reGapOne: 'Només un',
+    flowA_reGapMore: 'Més d\'un',
+    result_explain_re_gap: 'La readmissió només és possible si has interromput els estudis «durant un període no superior a un curs acadèmic, siga per no haver-se matriculat o per haver presentat la renúncia de matrícula» (art. 3.2; art. 12.1). El curs amb renúncia compta com a no matriculat a l\'efecte de la readmissió (art. 12.3). Has de realitzar novament la prova d\'accés (art. 12.9).',
 
     flowQ_midOrdinary: 'S\'ha completat ja la convocatòria ordinària d\'admissió en el centre?',
     flowA_midYes: 'Sí, ja s\'ha realitzat',
@@ -706,7 +746,7 @@ window.I18N = {
 
     result_explain_newAdmission: 'Has superat la prova d\'accés en el centre on sol·licites plaça. La teua adjudicació es resol en la primera adjudicació de la convocatòria ordinària, dins del teu nivell de prioritat i en la 2a posició de l\'ordre de prelació (art. 19.1.2n).',
     result_explain_newAdmission_1stMusic_under12: 'Has superat la prova d\'accés a primer curs d\'ensenyaments elementals de Música. Com a menor de 12 anys, participes en l\'acte públic d\'adjudicació d\'especialitat instrumental (Fase 2, art. 20.2), on triaràs instrument per ordre de qualificació.',
-    result_explain_newAdmission_1stMusic_over12: 'Has superat la prova d\'accés a primer curs d\'ensenyaments elementals de Música amb 12 anys o més. La teua adjudicació es realitza en la Fase 3, sense acte públic; la secretaria del centre gestiona l\'assignació per qualificació (art. 20.3).',
+    result_explain_newAdmission_1stMusic_over12: 'Has superat la prova d\'accés a primer curs d\'ensenyaments elementals de Música amb 12 anys o més. La teua adjudicació es realitza en la Fase 3, sense acte públic: s\'assigna per qualificació i pot gestionar-la la secretaria del centre (art. 20.3).',
     result_explain_readmission_same: 'Sol·licites readmissió en el teu mateix centre. Tens la màxima prioritat dins del teu nivell (1a posició en l\'ordre de prelació, art. 19.1.1r). La readmissió només pot concedir-se una vegada en el conjunt d\'EE i EP (art. 12.4).',
     result_explain_readmission_other: 'Sol·licites readmissió en un centre diferent del que vas estar matriculat/ada, perquè el teu centre no pot oferir-te plaça. La teua sol·licitud es resol en la segona adjudicació (art. 21), en la 2a posició de l\'ordre de prelació d\'aquesta adjudicació.',
     result_explain_transfer_admission: 'Sol·licites trasllat d\'expedient a un altre centre durant el procés d\'admissió. Es resol en la segona adjudicació de la convocatòria ordinària (art. 21), amb la màxima prioritat dins d\'aquesta (1a posició).',
@@ -715,6 +755,7 @@ window.I18N = {
     result_explain_midcourse_same: 'Estàs en llista d\'espera del mateix centre on vas superar la prova d\'accés (convocatòria ordinària o extraordinària). Les vacants generades durant el curs se t\'adjudiquen fins al 15 de desembre, segons l\'ordre dels arts. 18 i 19 (art. 22.3.a).',
     result_explain_midcourse_other: 'Estàs en llista d\'espera havent superat la prova en un altre centre. Les vacants generades durant el curs se t\'adjudiquen fins al 15 de desembre, però després d\'esgotar la llista del propi centre (art. 22.3.c).',
 
+    result_explain_exam_other: 'Has superat la prova d\'accés en un altre centre i allí no has obtingut plaça. Pots optar a plaça en este centre en el mateix curs i especialitat (art. 2.6). La teua sol·licitud es resol en la segona adjudicació (art. 21), en la 3a posició del seu ordre de prelació i dins del teu nivell de prioritat.',
     // Labels for answers breadcrumb
     label_context: 'Situació',
     label_studyType: 'Ensenyaments',
@@ -725,6 +766,7 @@ window.I18N = {
     label_midCourseType: 'Tipus de llista d\'espera',
 
     val_new: 'Nova admissió',
+    val_examOther: 'Prova en un altre centre',
     val_readmission: 'Readmissió',
     val_transfer: 'Trasllat',
     val_specialty: 'Canvi especialitat',
@@ -749,7 +791,7 @@ window.I18N = {
     // Reorientació
     viewReor: 'Reorientació',
     reor_title: 'Reorientació en proves d\'accés',
-    reor_intro: 'Quan l\'aspirant no supera la part interpretativa de la prova d\'accés, el tribunal pot reorientar el seu accés a un curs inferior (art. 8.9). Introdueix les dades per a veure les opcions disponibles.',
+    reor_intro: 'Quan l\'aspirant no supera la part interpretativa de la prova d\'accés, el tribunal pot proposar-li un curs inferior al sol·licitat, també d\'EP a EE, sempre que no el tinga superat ni haja esgotat la permanència (art. 8.9.1). Es proposa en acabar la interpretació i requerix l\'acceptació expressa de l\'aspirant o dels seus representants legals abans de la part teoricopràctica (art. 8.9.5); si l\'accepta, continua la prova amb els exercicis del curs proposat (art. 8.9.2). Introdueix les dades per a veure les opcions disponibles.',
     reor_select_spec: 'Selecciona especialitat',
     reor_group_ee: 'Amb ensenyaments elementals',
     reor_group_ep_only: 'Només ensenyaments professionals',
@@ -757,8 +799,8 @@ window.I18N = {
     reor_course: 'Curs de la prova',
     reor_birth: 'Any de naixement',
     reor_year: 'Any de la prova d\'accés',
-    reor_cee: 'Posseeix el Certificat d\'Ensenyaments Elementals (CEE)?',
-    reor_cee_note: 'Des del curs 2025-2026, s\'obté automàticament en superar la PPAA a ensenyaments professionals (art. 11.3)',
+    reor_cee: 'Posseeix el Certificat d\'Ensenyaments Elementals (CEE) en esta especialitat?',
+    reor_cee_note: 'Superar la prova d\'accés a EP en un conservatori permet sol·licitar directament el CEE (art. 11.3). Tindre el CEE no implica haver cursat 1r d\'EE.',
     reor_ee_passed: 'Cursos d\'EE superats en esta especialitat',
     reor_ee1_eponly: 'Ha superat 1r d\'EE Música en qualsevol especialitat?',
     reor_ep_passed: 'Cursos d\'EP superats en esta especialitat',
@@ -769,17 +811,19 @@ window.I18N = {
     reor_possible: 'Reorientació possible',
     reor_blocked: 'No és possible',
     reor_reason_passed: 'Curs ja superat (art. 2.2, art. 8.9.1)',
-    reor_reason_cee: 'Posseeix el CEE — tots els cursos d\'EE superats',
+    reor_reason_cee: 'Posseeix el CEE en esta especialitat: tots els seus cursos d\'EE estan superats',
     reor_reason_young: 'No compleix l\'edat mínima per a EE (art. 2.3)',
+    reor_reason_passed_1st: 'Ja va superar 1r d\'EE en una altra especialitat: la prova de 1r només dona accés a una especialitat (arts. 11.2 i 15.1)',
+    reor_reason_other_spec: 'Matriculat/ada en una altra especialitat: una segona especialitat no pot començar en 1r d\'EE (art. 15.2)',
     reor_reason_no_ee: 'Esta especialitat no té currículum en EE',
     reor_warn_level: 'Canvi de nivell de prioritat',
     reor_warn_specialty: 'Perd la vinculació a l\'especialitat instrumental (art. 8.9.3). Mateixes condicions que la resta d\'aspirants a 1r EE.',
     reor_warn_aacc: 'Només possible amb 7 anys si acredita AACC o precocitat extraordinària (art. 2.4)',
     reor_warn_permanence: 'Comprovar que no s\'ha esgotat el límit de permanència (art. 8.9.1)',
-    reor_warn_did1st: 'Ja va cursar 1r d\'EE anteriorment — verificar que no haja superat el curs ni esgotat la permanència',
     reor_warn_no_same_spec: 'No podrà matricular-se en l\'especialitat actual, en tindre cursos superiors superats en ella — haurà d\'elegir una altra especialitat en l\'acte públic',
     reor_warn_act: 'Si < 12 anys: participa en acte públic d\'elecció d\'instrument (art. 20.2)',
-    reor_did1st: 'Ha cursat anteriorment 1r d\'EE Música (en qualsevol especialitat)?',
+    reor_did1st: 'Ha superat 1r d\'EE Música en una altra especialitat?',
+    reor_other_spec: 'Està matriculat/ada actualment en una altra especialitat, d\'EE o d\'EP?',
     reor_course_1: '1r',
     reor_course_2: '2n',
     reor_course_3: '3r',

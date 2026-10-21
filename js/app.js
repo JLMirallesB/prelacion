@@ -4,6 +4,7 @@ const FLOWCHART_STEPS = {
     questionKey: 'flowQ_context',
     options: [
       { labelKey: 'flowA_newAdmission', next: 'q_studyType', answerKey: 'context', answerValue: 'new' },
+      { labelKey: 'flowA_examOtherAdmission', next: 'q_studyType_exo', answerKey: 'context', answerValue: 'examOther' },
       { labelKey: 'flowA_readmission', next: 'q_re_previous', answerKey: 'context', answerValue: 'readmission' },
       { labelKey: 'flowA_transfer', next: 'q_transferType', answerKey: 'context', answerValue: 'transfer' },
       { labelKey: 'flowA_specialtyChange', next: 'q_specialty_age', answerKey: 'context', answerValue: 'specialty' },
@@ -96,7 +97,7 @@ const FLOWCHART_STEPS = {
     type: 'question',
     questionKey: 'flowQ_rePrevious',
     options: [
-      { labelKey: 'flowA_reNo', next: 'q_studyType_re', answerKey: 'rePrevious', answerValue: 'no' },
+      { labelKey: 'flowA_reNo', next: 'q_re_passed', answerKey: 'rePrevious', answerValue: 'no' },
       { labelKey: 'flowA_reYes', next: 'r_re_blocked', answerKey: 'rePrevious', answerValue: 'yes' },
     ]
   },
@@ -104,6 +105,36 @@ const FLOWCHART_STEPS = {
     type: 'result',
     phaseKey: 'result_re_blocked',
     explanationKey: 'result_explain_re_blocked',
+    ordering: [],
+  },
+  // Art. 3.2 and 12.8: at least one course passed
+  q_re_passed: {
+    type: 'question',
+    questionKey: 'flowQ_rePassed',
+    options: [
+      { labelKey: 'flowA_rePassedYes', next: 'q_re_gap', answerKey: 'rePassed', answerValue: 'yes' },
+      { labelKey: 'flowA_rePassedNo', next: 'r_re_nocourse', answerKey: 'rePassed', answerValue: 'no' },
+    ]
+  },
+  r_re_nocourse: {
+    type: 'result',
+    phaseKey: 'result_re_blocked',
+    explanationKey: 'result_explain_re_nocourse',
+    ordering: [],
+  },
+  // Art. 3.2, 12.1 and 12.3: at most one course without enrolment (a withdrawn course counts)
+  q_re_gap: {
+    type: 'question',
+    questionKey: 'flowQ_reGap',
+    options: [
+      { labelKey: 'flowA_reGapOne', next: 'q_studyType_re', answerKey: 'reGap', answerValue: 'one' },
+      { labelKey: 'flowA_reGapMore', next: 'r_re_gap', answerKey: 'reGap', answerValue: 'more' },
+    ]
+  },
+  r_re_gap: {
+    type: 'result',
+    phaseKey: 'result_re_blocked',
+    explanationKey: 'result_explain_re_gap',
     ordering: [],
   },
   q_studyType_re: {
@@ -212,6 +243,57 @@ const FLOWCHART_STEPS = {
     phaseKey: 'result_secondAdj',
     prelacionKey: 'result_secondAdj_pre2',
     explanationKey: 'result_explain_readmission_other',
+    ordering: ['ordering_course', 'ordering_grade', 'ordering_birth', 'ordering_lottery'],
+  },
+
+  // --- Exam passed in another center without a place (2nd adj, prelacion 3 of art. 21) ---
+  q_studyType_exo: {
+    type: 'question', questionKey: 'flowQ_studyType',
+    options: [
+      { labelKey: 'flowA_elementary', next: 'q_age_elem_exo', answerKey: 'studyType', answerValue: 'elementary' },
+      { labelKey: 'flowA_professional', next: 'q_age_prof_exo', answerKey: 'studyType', answerValue: 'professional' },
+    ]
+  },
+  q_age_elem_exo: {
+    type: 'question', questionKey: 'flowQ_ageElem',
+    options: [
+      { labelKey: 'flowA_under12', next: 'r_exo_l2', answerKey: 'age', answerValue: 'under12' },
+      { labelKey: 'flowA_12orOver', next: 'r_exo_l4', answerKey: 'age', answerValue: '12orOver' },
+    ]
+  },
+  q_age_prof_exo: {
+    type: 'question', questionKey: 'flowQ_ageProf',
+    options: [
+      { labelKey: 'flowA_under18', next: 'r_exo_l1', answerKey: 'age', answerValue: 'under18' },
+      { labelKey: 'flowA_18orOver', next: 'r_exo_l3', answerKey: 'age', answerValue: '18orOver' },
+    ]
+  },
+  r_exo_l1: {
+    type: 'result', level: 1, secondAdjPrelacion: 3,
+    phaseKey: 'result_secondAdj',
+    prelacionKey: 'result_secondAdj_pre3',
+    explanationKey: 'result_explain_exam_other',
+    ordering: ['ordering_course', 'ordering_grade', 'ordering_birth', 'ordering_lottery'],
+  },
+  r_exo_l2: {
+    type: 'result', level: 2, secondAdjPrelacion: 3,
+    phaseKey: 'result_secondAdj',
+    prelacionKey: 'result_secondAdj_pre3',
+    explanationKey: 'result_explain_exam_other',
+    ordering: ['ordering_course', 'ordering_grade', 'ordering_birth', 'ordering_lottery'],
+  },
+  r_exo_l3: {
+    type: 'result', level: 3, secondAdjPrelacion: 3,
+    phaseKey: 'result_secondAdj',
+    prelacionKey: 'result_secondAdj_pre3',
+    explanationKey: 'result_explain_exam_other',
+    ordering: ['ordering_course', 'ordering_grade', 'ordering_birth', 'ordering_lottery'],
+  },
+  r_exo_l4: {
+    type: 'result', level: 4, secondAdjPrelacion: 3,
+    phaseKey: 'result_secondAdj',
+    prelacionKey: 'result_secondAdj_pre3',
+    explanationKey: 'result_explain_exam_other',
     ordering: ['ordering_course', 'ordering_grade', 'ordering_birth', 'ordering_lottery'],
   },
 
@@ -477,7 +559,7 @@ const TIMELINE_POSITIONS = [
 const PHASE_LEVEL_TO_POS = {
   'result_firstAdj:1': 0, 'result_firstAdj:2': 1,
   'result_adj1_l2b:2': 2,
-  'result_adj1_cambio:2': 3, 'result_adj1_cambio:4': 3,
+  'result_adj1_cambio:2': 3, 'result_adj1_cambio:4': 5,
   'result_adj1_l3l4:3': 4, 'result_adj1_l3l4:4': 5,
   'result_secondAdj:1': 6, 'result_secondAdj:2': 7, 'result_secondAdj:3': 8, 'result_secondAdj:4': 9,
   'result_art22a:1': 11, 'result_art22a:2': 11, 'result_art22a:3': 11, 'result_art22a:4': 11,
@@ -496,7 +578,7 @@ const ANSWER_LABELS = {
 };
 
 const ANSWER_VALUES = {
-  context: { new: 'val_new', readmission: 'val_readmission', transfer: 'val_transfer', specialty: 'val_specialty', midcourse: 'val_midcourse' },
+  context: { new: 'val_new', examOther: 'val_examOther', readmission: 'val_readmission', transfer: 'val_transfer', specialty: 'val_specialty', midcourse: 'val_midcourse' },
   studyType: { elementary: 'val_elementary', professional: 'val_professional' },
   age: { under12: 'val_under12', '12orOver': 'val_12orOver', under18: 'val_under18', '18orOver': 'val_18orOver' },
   course: { '1stMusic': 'val_1stMusic', '1stDance': 'val_1stDance', other: 'val_other' },
@@ -513,7 +595,7 @@ const ALL_SCHEMA_SECTIONS = [
   's_mid',
 ];
 
-const ANSWER_ORDER = ['context', 'rePrevious', 'studyType', 'age', 'course', 'center', 'transferType', 'midOrdinary', 'midCourseType'];
+const ANSWER_ORDER = ['context', 'rePrevious', 'rePassed', 'reGap', 'studyType', 'age', 'course', 'center', 'transferType', 'midOrdinary', 'midCourseType'];
 
 const MUSIC_SPECIALTIES = [
   { key: 'accordion', hasEE: true },
@@ -789,7 +871,7 @@ document.addEventListener('alpine:init', () => {
       birthYear: '',
       courseYear: new Date().getFullYear(),
       hasCEE: false,
-      ee1: false, ee2: false, ee3: false, did1stEE: false,
+      ee1: false, ee2: false, ee3: false, did1stEE: false, otherSpec: false,
       ep1: false, ep2: false, ep3: false, ep4: false, ep5: false,
     },
 
@@ -831,14 +913,23 @@ document.addEventListener('alpine:init', () => {
       const age = this.reorAge;
       if (age === null) return [];
       const currentLevel = this.reorCurrentLevel;
+      // The CEE only closes EE in its own specialty; an EP-only specialty has no EE of its own
+      const hasCEE = r.hasCEE && spec.hasEE;
+      // 1st EE is also closed if passed in another specialty (arts. 11.2, 15.1) or while enrolled in another one (art. 15.2)
+      const firstEEReason = () => {
+        if (spec.hasEE && r.did1stEE) return 'reor_reason_passed_1st';
+        if (r.otherSpec) return 'reor_reason_other_spec';
+        return '';
+      };
       const results = [];
 
       for (let c = examCourse - 1; c >= 1; c--) {
         const entry = { key: (isEP ? 'ep' : 'ee') + '_' + c, courseNum: c, teaching: r.teachingType, blocked: false, reason: '', warnings: [], levelChange: null };
         if (isEP && r['ep' + c]) { entry.blocked = true; entry.reason = 'reor_reason_passed'; }
         else if (!isEP) {
-          if (r.hasCEE) { entry.blocked = true; entry.reason = 'reor_reason_cee'; }
+          if (hasCEE) { entry.blocked = true; entry.reason = 'reor_reason_cee'; }
           else if (r['ee' + c]) { entry.blocked = true; entry.reason = 'reor_reason_passed'; }
+          else if (c === 1 && firstEEReason()) { entry.blocked = true; entry.reason = firstEEReason(); }
         }
         if (!isEP && !entry.blocked) {
           if (age < 7) { entry.blocked = true; entry.reason = 'reor_reason_young'; }
@@ -847,7 +938,6 @@ document.addEventListener('alpine:init', () => {
         }
         if (!isEP && c === 1 && !entry.blocked) {
           entry.warnings.push('reor_warn_specialty');
-          if (r.did1stEE) entry.warnings.push('reor_warn_did1st');
           if (spec.hasEE && (r.ee2 || r.ee3)) entry.warnings.push('reor_warn_no_same_spec');
           if (age < 12) entry.warnings.push('reor_warn_act');
         }
@@ -861,9 +951,10 @@ document.addEventListener('alpine:init', () => {
         const maxEECourse = spec.hasEE ? 4 : 1;
         for (let c = maxEECourse; c >= 1; c--) {
           const entry = { key: 'ee_' + c, courseNum: c, teaching: 'elementary', blocked: false, reason: '', warnings: [], levelChange: levelChange };
-          if (r.hasCEE) { entry.blocked = true; entry.reason = 'reor_reason_cee'; }
+          if (hasCEE) { entry.blocked = true; entry.reason = 'reor_reason_cee'; }
           else if (r['ee' + c]) { entry.blocked = true; entry.reason = 'reor_reason_passed'; }
           else if (!spec.hasEE && c > 1) { entry.blocked = true; entry.reason = 'reor_reason_no_ee'; }
+          else if (c === 1 && firstEEReason()) { entry.blocked = true; entry.reason = firstEEReason(); }
           if (!entry.blocked) {
             if (age < 7) { entry.blocked = true; entry.reason = 'reor_reason_young'; }
             else if (age === 7 && c > 1) { entry.blocked = true; entry.reason = 'reor_reason_young'; }
@@ -871,7 +962,6 @@ document.addEventListener('alpine:init', () => {
           }
           if (c === 1 && !entry.blocked) {
             entry.warnings.push('reor_warn_specialty');
-            if (r.did1stEE) entry.warnings.push('reor_warn_did1st');
             if (spec.hasEE && (r.ee2 || r.ee3)) entry.warnings.push('reor_warn_no_same_spec');
             if (age < 12) entry.warnings.push('reor_warn_act');
           }
