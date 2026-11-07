@@ -37,4 +37,17 @@ Abrir `http://localhost:8000`. No requiere build ni dependencias.
 
 ## Autor
 
-[Jose Luis Miralles Bono](https://www.jlmirall.es) con ayuda de [Claude](https://claude.ai).
+[José Luis Miralles Bono](https://jlmirall.es) con ayuda de [Claude](https://claude.ai) · joseluismirallesbono@gmail.com ·
+☕ [Invítame a una horchata](https://ko-fi.com/miralles)
+
+Más información: [Agilizando la gestión de Vacantes en los Conservatorios](https://elpulpoenelvaso.jlmirall.es/?p=739)
+
+## Licencia
+
+© 2026 José Luis Miralles Bono
+
+- **Código:** [GNU AGPL v3](LICENSE).
+- **Contenidos** (textos, explicaciones, plantillas de Excel): [CC BY-SA 4.0](LICENSE-CONTENIDOS).
+
+**Excepciones:** `js/alpine.min.js` y `js/collapse.min.js` son [Alpine.js](https://alpinejs.dev) (MIT,
+© Caleb Porzio). El texto de la Orden 8/2026 es una disposición legal y no está sujeto a derechos de autor.

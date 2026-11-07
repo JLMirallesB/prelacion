@@ -68,6 +68,9 @@ window.I18N = {
     footerWithHelp: 'con ayuda de',
     footerOrchata: 'Invítame a una orchata',
     footerSource: 'Código fuente',
+    footerMore: 'Más información sobre este proyecto',
+    footerCodeLic: 'Código bajo licencia',
+    footerContentLic: 'contenidos bajo',
 
     // Modelos descargables
     viewModels: 'Modelos',
@@ -499,6 +502,9 @@ window.I18N = {
     footerWithHelp: 'amb ajuda de',
     footerOrchata: 'Invita\'m a una orxata',
     footerSource: 'Codi font',
+    footerMore: 'Més informació sobre aquest projecte',
+    footerCodeLic: 'Codi amb llicència',
+    footerContentLic: 'continguts amb llicència',
 
     // Modelos descargables
     viewModels: 'Models',

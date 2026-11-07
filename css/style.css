@@ -1789,3 +1789,8 @@ body.presentation {
     font-size: 11pt;
   }
 }
+
+.footer-licencia {
+  font-size: 0.8em;
+  opacity: 0.85;
+}

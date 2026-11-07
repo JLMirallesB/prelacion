@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.1
+
+- Licencia: el código pasa a GNU AGPL v3 y los contenidos a CC BY-SA 4.0. El pie lo indica y enlaza a la entrada del blog sobre la herramienta
+
 ## v1.3.0
 
 - Guía paso a paso: nueva situación «Prueba superada en otro centro, sin plaza en él», que lleva a la 2.ª adjudicación en la 3.ª posición (arts. 2.6 y 21.3.º)
